@@ -6,8 +6,60 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display:flex;
+    position: relative;
 }
 
+.photograph-header a {
+    text-decoration: none;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    margin-bottom: 50px;
+}
+
+.photograph-header article h2 {
+    color: #D3573C;
+    font-size: 64px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: -9px;
+    
+}
+.photograph-header article p {   /* */
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 1px;
+}
+.photograph-header article span {  /* */
+    font-size: 18px;  
+    font-weight: 400;
+    margin-bottom: 5px;
+    color:black;
+}
+
+.photograph-header article img {  /* */
+    height: 200px;
+    width: 200px;
+    border-radius:100px;
+    object-fit: cover;
+    position:absolute ;
+    right: 28px;
+    top:52px;
+}
+
+.photograph-header .photographer-info
+{
+ 
+ height:300px;
+ position: absolute;
+ top: -26px;
+ left: 58px;
+}
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -19,6 +71,9 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    position:absolute;
+    right:445px;
+    top:110px;
 }
 
 .modal {
@@ -73,4 +128,22 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.photos{
+    margin: 0 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin-top: 100px;
+}
+.photo{
+    
+    overflow: hidden;
+}
+.photo img{
+    width:350px;
+    height:300px;
+    border-radius: 5px;
+    object-fit: cover;
 }

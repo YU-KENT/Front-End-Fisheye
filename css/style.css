@@ -21,30 +21,63 @@ h1 {
 
 .logo {
     height: 50px;
-    margin-left: 100px;
+    margin-left: 117px;  
 }
 
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    gap: 30px;
     margin-top: 100px;
 }
 
 .photographer_section article {
+    
+}
+.photographer_section a {
+    text-decoration: none;
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 50px;
 }
-
+.photographer-info
+{   display: flex;
+    flex-direction: column;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+}
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: -9px;
+    
 }
+.photographer_section article p {   /* */
+    color: #901C1C;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 1px;
+}
+.photographer_section article span {  /* */
+    font-size: 10px;  
+    font-weight: 400;
+    margin-bottom: 5px;
+    color:black;
+}
+.photographer_section article span.fs-9
+{font-size:9px;
+ color:#757575;}
 
-.photographer_section article img {
+.photographer_section article img {  /* */
     height: 200px;
     width: 200px;
+    border-radius:100px;
+    object-fit: cover;
 }

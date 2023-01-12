@@ -9,12 +9,23 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href ="index.html"><img src="assets/images/logo.png" alt ="Fisheye home page" class="logo" /></a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" aria-label="Ouvrez la fenetre de contact" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <div class="select">
+        <label for="Trier Par">Trier Par</label>
+          <select id="selecte-box">
+            <option value="Popularité">Popularité</option>
+            <option value="Date">Date</option>
+            <option value="Titre">Titre</option>
+          </select>
+      </div>
+      <section class="photos">
+
+      </section>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -27,11 +38,25 @@
 						<label>Prénom</label>
 						<input />
 					</div>
+          <div>
+						<label>Nom</label>
+						<input />
+					</div>
+          <div>
+						<label>Email</label>
+						<input />
+					</div>
+          <div>
+						<label>Votre Message</label>
+						<input />
+					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/data.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>
