@@ -10,3 +10,12 @@ async function getPhotographersData() {
    /*  return ({
         photographers: [...photographers,...photographers, ...photographers]}) */
 }
+async function getmediaData() {
+
+    const res = await fetch("data/photographers.json");
+    const data = await res.json();
+    const mediaData = data.media;
+    /* console.log(data.media); */ //correct
+    return ({media: mediaData})  //get data photos 
+    
+}

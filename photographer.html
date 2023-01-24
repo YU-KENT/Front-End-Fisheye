@@ -17,45 +17,67 @@
       </div>
       <div class="select">
         <label for="Trier Par">Trier Par</label>
-          <select id="selecte-box">
+          <select id="select-box">
             <option value="Popularité">Popularité</option>
             <option value="Date">Date</option>
             <option value="Titre">Titre</option>
           </select>
       </div>
       <section class="photos">
+        <div class="encart">
+          <div class="encart_likes">
+          <span id="totallikes"></span>
+          <img src="assets/icons/heart_black.svg">
+          </div>
+          <span id="encart_price">300€/jour</span>      
+         </div>
 
       </section>
+      
+      <div class="lightbox">
+        <div class="lightbox_container">
+
+        </div>
+        <div class="lightbox_buttons">
+        <button type="button" aria-label="Fermer le PHOTO"class="lightbox_close" ></button>
+        <button class="lightbox_prev"></button>
+        <button class="lightbox_next"></button>
+       </div>
+      </div>
     </main>
     <div id="contact_modal">
-			<div class="modal">
+			 <div class="modal">
 				<header>
+          <div class="header-text">
           <h2>Contactez-moi</h2>
+          <h2 id="currentname">${name}</h2>
+         </div>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
+				<form name="contact" id="myform" method="get" action="photographer.html"
+        novalidate>
+					<div class="formData">
 						<label>Prénom</label>
-						<input />
+						<input type="text" id="firstname">
 					</div>
-          <div>
+          <div class="formData">
 						<label>Nom</label>
-						<input />
+						<input type="text" id="lastname">
 					</div>
-          <div>
+          <div class="formData">
 						<label>Email</label>
-						<input />
+						<input type="text" id="email">
 					</div>
-          <div>
+          <div class="formData">
 						<label>Votre Message</label>
-						<input />
+						<textarea type="text" id="message" rows="4"></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="envoyer_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
     <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/data.js"></script>
+    <script src="scripts/utils/data.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
   </body>

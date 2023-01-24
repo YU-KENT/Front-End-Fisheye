@@ -1,7 +1,7 @@
 #contact_modal {
     display: none;
 }
-
+/*header*/
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -75,11 +75,12 @@
     right:445px;
     top:110px;
 }
-
+/* contact modal */
 .modal {
+    width:669px;
+    height:900px;
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,16 +92,24 @@
 .modal header {
     justify-content: space-between;
     width: 100%;
+    margin:24px;
 }
 
 .modal header img {
     cursor: pointer;
+    position: relative;
+    top: -40px;
 }
 
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    margin:0;
+    margin-top: -12px;
+}
+.header-text{
+    display: flex;
+    flex-direction: column;
 }
 
 form {
@@ -120,21 +129,51 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    margin-bottom: 15px;
 }
 
-form input {
+form input,form textarea {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 35Px;
 }
-
+/* select box */
+.select{
+    
+    margin-left: 100px;
+}
+.select label{
+    font-size: 18px;
+    font-weight: 700;
+}
+#select-box{
+    width:170px;
+    height:56px;
+    border-color: #901C1C;
+    background-color: #901C1C;
+    margin-left: 25px;
+    font-size: 18px;
+    font-weight: 700;
+    color:#FAFAFA;
+}
+#select-box option{
+    padding-left: 10px;
+    
+    color:#FAFAFA;
+    width: 150px;
+    height:10px;
+    border-bottom: 1px solid #FAFAFA;
+    
+    
+}
+/* section media */
 .photos{
     margin: 0 100px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
+    gap: 80px;
     margin-top: 100px;
 }
 .photo{
@@ -146,4 +185,184 @@ form input {
     height:300px;
     border-radius: 5px;
     object-fit: cover;
+    cursor: pointer;
 }
+.photo_title, .photo_like{
+   color:#901C1C;
+   font-size: 24px;
+}
+
+.photo_title{
+    display: block;
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.photo_like img{
+    width:17.5px;
+    height:18.35px;
+}
+    
+.photo video{
+    width:350px;
+    height:300px;
+    border-radius: 5px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.photo_context{
+    display: flex;
+    justify-content: space-between;
+}
+.modal-on  /*background modal*/
+{position: absolute;
+left: 0;
+top: 0;
+height: 100vh;
+width: 100vw;
+background-color: rgba(213, 213, 213, 0.5);
+overflow: hidden;
+}
+
+.envoyer_button{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ #message
+{
+    height:170px;
+    padding-left:10px;/*这里的值可以改变光标的位置*/
+}
+
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 20px;
+    font-weight: 900;
+    color: black;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 0px;
+    text-align: left;
+    line-height: 0.8;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  .formData[data-error-visible="true"]::after {
+    opacity: 1;
+  }
+
+  /*lightbox*/
+  .lightbox_container{
+
+  }
+  .lightbox_affiche{
+    position: fixed;
+    top:0;
+    width: 100%;
+    height:100%;
+    background-color:white;
+    display: none;
+    /* transform: translateX(13%); */
+   
+  }
+  .lightbox_affiche.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }  
+  .lightbox_img,.lightbox_video{
+    overflow: hidden;
+    
+  }
+
+  .lightbox .photo_title{
+    font-weight: 400;
+    margin:20px;
+    margin-left: 110px;
+    
+  }
+
+  .lightbox_img img,.lightbox_video video{
+    width: 1050px;
+    height:900px;
+    object-fit: cover;
+    margin-top: 50px;
+  }
+
+   .lightbox_buttons
+  {
+    display: none;
+  }
+  .lightbox_buttons.active
+  {
+    display: flex;
+  } 
+
+  .lightbox_close{
+   
+    width:42px;
+    height:42px;
+    border:none;
+    background: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="42" height="42" viewBox="0 0 24 24"%3E%3Cpath fill="%23901c1c" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"%2F%3E%3C%2Fsvg%3E');
+    position: fixed;
+    top:50px;
+    right:130px;
+
+  }
+
+  .lightbox_prev{
+    height:30px;
+    width:50px;
+    border:none;
+    background: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="48" height="30" viewBox="0 0 24 24"%3E%3Cpath fill="%23901c1c" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225Z"%2F%3E%3C%2Fsvg%3E');
+    position: fixed;
+    top:50%;
+    left:130px;
+  }
+
+  .lightbox_next{
+    position: fixed;
+    height:30px;
+    width:50px;
+    border:none;
+    background: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="48" height="30" viewBox="0 0 24 24"%3E%3Cg transform="rotate(180 12 12)"%3E%3Cpath fill="%23901c1c" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225Z"%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+    top:50%;
+    right:130px;
+  }
+
+  .encart{
+    width:376px;
+    height:89px;
+    background-color:#DB8876;
+    display: flex;
+    justify-content: space-between;
+    position:fixed;
+    right:30px;
+    bottom: 0%;
+    border-radius: 5px;
+    font-size: 24px;
+    align-items: center;
+  }
+
+  #encart_price{
+  margin-right: 10%;
+  font-weight: 500;
+  }
+  #totallikes{
+    margin-left: 40%;
+  }
+  .encart_likes{
+    display: flex;
+    align-items: center;
+  }
