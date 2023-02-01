@@ -13,8 +13,11 @@
         const { photographers } = await getPhotographersData();
         
         displayData(photographers);
+        keyarrow();
+        
 
     };
     
     displayPhotographers();
    
+    

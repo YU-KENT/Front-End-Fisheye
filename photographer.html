@@ -1,78 +1,92 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="decouvrez album photos de photographer ">
+    <!--title-->
+    <title>Fisheye - Page d'accueil</title>
+    <!--CSS-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!--icon-->
     <link rel="icon" type="image/png" href="assets/favicon.png">
+    <!--font-->
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <a href ="index.html"><img src="assets/images/logo.png" alt ="Fisheye home page" class="logo" /></a>
+    <!--header de la page photographe-->
+    <header role="banner" tabindex="0" aria-label="en-tete de la page photographer">
+      <a href="index.html"><img src="assets/images/logo.png" alt ="logo de bannière pour le site" class="logo" /></a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" aria-label="Ouvrez la fenetre de contact" onclick="displayModal()">Contactez-moi</button>
+    <!--main contenu de la page principale-->
+    <main id="main" role="main" aria-label="contenu de la page du photographe" tabindex="0">
+    <!--profile de photographer-->
+      <div class="photograph-header" aria-label="le profile de photographer" tabindex="0">
+        <button class="contact_button" aria-label="button pour ouvrir la fenetre pour contacter le photographe" onclick="displayModal()">Contactez-moi</button>
       </div>
-      <div class="select">
-        <label for="Trier Par">Trier Par</label>
-          <select id="select-box">
+    <!--select box-->
+      <div class="select arrow">
+        <label for="select">Trier Par</label>
+          <select name="trier par" id="select-box" aria-label="button pour ouvrir le menu déroulant">
             <option value="Popularité">Popularité</option>
             <option value="Date">Date</option>
             <option value="Titre">Titre</option>
           </select>
       </div>
-      <section class="photos">
-        <div class="encart">
+    <!--modal album photos-->
+      <section class="photos" tabindex="0" aria-label="l'album photos de photographer">
+    <!--encart-->
+        <div class="encart" tabindex="0" aria-label="un encart pour presenter le totale likes et tarif de photographer">
           <div class="encart_likes">
-          <span id="totallikes"></span>
-          <img src="assets/icons/heart_black.svg">
+          <span id="totallikes" aria-label="le photographe a total likes" tabindex="0"></span>
+          <img src="assets/icons/heart_black.svg" alt="icon image ceour">
           </div>
-          <span id="encart_price">300€/jour</span>      
-         </div>
-
+          <span id="encart_price" aria-label="le tarif est 300€ par jour" tabindex="0"></span>>300€/jour</span>      
+        </div>
       </section>
-      
-      <div class="lightbox">
-        <div class="lightbox_container">
+    <!--modal pour light box-->
+      <div class="lightbox" role="dialog" aria-label="Parcourez le photo en grand">
+        <div role="album" class="lightbox_container">
 
         </div>
         <div class="lightbox_buttons">
-        <button type="button" aria-label="Fermer le PHOTO"class="lightbox_close" ></button>
-        <button class="lightbox_prev"></button>
-        <button class="lightbox_next"></button>
+        <button type="button" aria-label="button pour fermer la fenetre de dialog" class="lightbox_close" ></button>
+        <button type="button" aria-label="button pour passer à l'image précédente" class="lightbox_prev"></button>
+        <button type="button" aria-label="button pour passer à l'image suivante" class="lightbox_next"></button>
        </div>
       </div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog" aria-labelledby="currentname">
 			 <div class="modal">
-				<header>
+				<header tabindex="0" aria-label="header de la formulaire contact">
           <div class="header-text">
           <h2>Contactez-moi</h2>
           <h2 id="currentname">${name}</h2>
          </div>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" role="button" alt="button à click to close contact formulaire" tabindex="0" onclick="closeModal()" />
         </header>
 				<form name="contact" id="myform" method="get" action="photographer.html"
         novalidate>
-					<div class="formData">
-						<label>Prénom</label>
-						<input type="text" id="firstname">
+					<div class="formData" aria-labelledby="firstname">
+						<label for="Prénom">Prénom</label>
+						<input type="text" name="Prénom" id="firstname" >
 					</div>
-          <div class="formData">
-						<label>Nom</label>
-						<input type="text" id="lastname">
+          <div class="formData" aria-labelledby="lastname">
+						<label for="Nom">Nom</label>
+						<input type="text" name="Nom" id="lastname">
 					</div>
-          <div class="formData">
-						<label>Email</label>
-						<input type="text" id="email">
+          <div class="formData" aria-labelledby="email">
+						<label for ="email">Email</label>
+						<input type="email" name="email"id="email">
 					</div>
-          <div class="formData">
+          <div class="formData" aria-labelledby="message">
 						<label>Votre Message</label>
-						<textarea type="text" id="message" rows="4"></textarea>
+						<textarea type="text" id="message" rows="4" aria-labelledby="Entrer message"></textarea>
+            <span id="Entrer message" class="hidden">Veuillez entrer votre Email</span>
 					</div>
-          <button class="envoyer_button">Envoyer</button>
+
+          <button type="submit" class="envoyer_button" aria-label="button pour envoyer le message">Envoyer</button>
 				</form>
 			</div>
 		</div>

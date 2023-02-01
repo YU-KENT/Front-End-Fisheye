@@ -1,25 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Bienvenue sur la page d'accueil de FishEye, la plateforme parfaite pour les photographes freelance!">
+    <!--title-->
+    <title>Fisheye - Page d'accueil</title>
+    <!--CSS-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!--icon-->
     <link rel="icon" type="image/png" href="assets/favicon.png">
+    <!--font-->
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
   </head>
   <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" />
-        <h1>Nos photographes</h1>
+    <!--header-->
+    <header role="banner" tabindex="0" aria-label="En-tete de la page d'accueil">
+        <img src="assets/images/logo.png" class="logo" alt="logo pour le site de Fisheye" />
+        <h1 tabindex="0">Nos photographes</h1>
     </header>
-    <main id="main">
-        <div class="photographer_section"></div>
+    <!--main-->
+    <main id="main" role="main" aria-label="contenu de la page d'accueil" tabindex="0">
+        <section class="photographer_section" aria-label="presenter les photographers"></section>
 
     </main>
     
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/utils/data.js"></script>
     <script src="scripts/pages/index.js"></script>
+    <script src="scripts/utils/keyboard.js"></script>
     
   </body>
 </html>
