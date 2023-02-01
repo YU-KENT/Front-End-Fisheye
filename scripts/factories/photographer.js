@@ -7,7 +7,7 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const userCard = `
-        <a href="${link}" target="blank" role="link" title="visiter la page de photographer${name}"
+        <a href="${link}" target="blank" role="link" title="visiter la page de photographer ${name}"
         <div class="photographer-img"><img src="${picture}" alt="portrait de ${name}"></div>
         <div class="photographer-info" aria-label="information de photographer ${name}">
         <h2>${name}</h2>
@@ -50,7 +50,7 @@ function mediaFactory(photographer,media){
     `
     const videoCard = `
     <div class="photo">
-       <video controls> <source src="${pathsVideo}" alt="${title} fait en ${date}>
+       <video controls aria-label="${title} fait en ${date}> <source src="${pathsVideo}">
        </video>
     </div>
     <div aria-label="la titre du video" class="photo_context">

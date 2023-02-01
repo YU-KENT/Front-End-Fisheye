@@ -1,7 +1,16 @@
+const prenom = document.getElementById("firstname")
+const nom = document.getElementById("lastname")
+const email = document.getElementById("email")
+const message = document.getElementById("message")
+const formulaire = document.getElementById("myform")
+const formData = document.querySelectorAll(".formData")
+
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     modal.classList.add('modal-on');
-	modal.style.display = "block"
+	  modal.style.display = "block";
+    prenom.focus();
+
 }
 
 function closeModal() {
@@ -10,12 +19,7 @@ function closeModal() {
     modal.style.display = "none";
 }
 
-const prenom = document.getElementById("firstname")
-const nom = document.getElementById("lastname")
-const email = document.getElementById("email")
-const message = document.getElementById("message")
-const formulaire = document.getElementById("myform")
-const formData = document.querySelectorAll(".formData")
+
 
 formulaire.addEventListener("submit",validate)
 function validate(event){
