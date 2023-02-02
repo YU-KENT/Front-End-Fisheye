@@ -13,8 +13,7 @@
         const { photographers } = await getPhotographersData();
         
         displayData(photographers);
-        keyarrow();
-        
+        keyarrowLeftRight();
 
     };
     
