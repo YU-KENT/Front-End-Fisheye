@@ -241,6 +241,7 @@ select option{
 
 
 /* section media */
+
 .photos{
     
     display: grid;
@@ -248,6 +249,7 @@ select option{
     margin:0 100px;
     gap:85px;
     margin-top: 100px;
+    outline: none;
     
 }
 .photo{
@@ -358,9 +360,7 @@ overflow: hidden;
   }
 
   /*lightbox*/
-  .lightbox_container{
-
-  }
+ 
   .lightbox_affiche{
     position: fixed;
     top:0;
@@ -379,7 +379,7 @@ overflow: hidden;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+   
   }  
  
 
@@ -401,16 +401,17 @@ overflow: hidden;
    width:100%;
    overflow: hidden;
    object-fit: cover;
-   
+   display: flex;
+   flex-direction: column;
    color:#901C1C;
    font-size:25px;
    font-weight: 500;
   }
 
-
-  /* {
-    margin-left:30px
-  } */
+  .lightbox_img span,.lightbox_video span
+  {
+    margin-left:70px
+  } 
 
    .lightbox_buttons
   {
@@ -449,10 +450,14 @@ overflow: hidden;
     width:50px;
     border:none;
     background: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="48" height="30" viewBox="0 0 24 24"%3E%3Cg transform="rotate(180 12 12)"%3E%3Cpath fill="%23901c1c" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225Z"%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
-    top:50%;
+    top:48%;
     right:10%;
   }
+  .lightbox_prev:focus,.lightbox_next:focus,.lightbox_close:focus{
+    transform: scale(1.1);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1)300ms;
 
+  }
   .encart{
     width:376px;
     height:80px;
@@ -465,8 +470,12 @@ overflow: hidden;
     border-radius: 5px;
     font-size: 24px;
     align-items: center;
+    z-index: 99;
   }
-
+  .encart:hover,.encart:focus{
+    transform: scale(1.1);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1)300ms;
+  }
   #encart_price{
   margin-right: 10%;
   font-weight: 500;

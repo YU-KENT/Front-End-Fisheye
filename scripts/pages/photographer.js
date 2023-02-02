@@ -28,43 +28,41 @@ function displayHeader(photographer) {
 
 };
 
-
+function addDataId(){
+    const gallery = document.querySelectorAll(".photo") // get dom image or video
+    for(i = 0; i < gallery.length; i ++){
+        const gal = gallery[i].firstElementChild
+        gal.setAttribute("data-id", i);
+       }
+       }
 function addPhotos(photographer,medias) {
     const cardSection = document.querySelector(".photos")
     medias.forEach((media) =>{ 
          const card = mediaFactory(photographer, media).getPhotosCard();
          cardSection.appendChild(card);
-         
-        
                                })  
-                        
-                                        }
+    addDataId();
+}
 
-function addDataId(){
-        const gallery = document.querySelectorAll(".photo") // get dom image or video
-        console.log("gallery1",gallery)
-        for(i = 0; i < gallery.length; i ++){
-            const gal = gallery[i].firstElementChild
-            gal.setAttribute("data-id", i);
-           }
-           }
     
-function addlightbox(photographer,filteredMedia) {
+function addlightbox(photographer,myArray) {
     const btnPrev = document.querySelector(".lightbox_prev")
     const btnNext = document.querySelector(".lightbox_next")
     // creat lightox
-    filteredMedia.forEach((media) =>{
+    myArray.forEach((media) =>{
     const lightboxCardMode = lightboxFactory(photographer, media)
     const lightboxCard = lightboxCardMode.getLightboxCard()
     lightbox.appendChild(lightboxCard) })
     
     // l'affichage de photo lightbox
     const lightboxgallery = document.querySelectorAll(".lightbox_affiche")
+    console.log("lightboxgallery",lightboxgallery)
     const gallery = document.querySelectorAll(".photo");// get images 
     console.log("gallery",gallery)
-    gallery.forEach((gal) => gal.addEventListener("click", e=> {  // add function open lightbox
-            console.log("KKK")
-        const currentDataId = e.target.getAttribute("data-id")
+    
+    gallery.forEach((gal) => gal.addEventListener("click", openLightbox));
+    function openLightbox(e){  // add function open lightbox
+            const currentDataId = e.target.getAttribute("data-id")
             console.log("currentDataId",currentDataId)
             lightboxgallery[currentDataId].classList.add("active")
             lightBtns.classList.add("active")
@@ -76,7 +74,7 @@ function addlightbox(photographer,filteredMedia) {
         function next() {   // add click function next
         const AfficheIndex = arryLightboxgallery
         .findIndex(e=> e.classList.length == 2);  //find index
-
+        
         var plus = AfficheIndex + 1 ;
  
         if (plus == lightboxgallery.length) {plus = 0} // last photo to first photo
@@ -99,7 +97,6 @@ function addlightbox(photographer,filteredMedia) {
                     }
      //close button
      
-     
      const btnClose = document.querySelector(".lightbox_buttons.active .lightbox_close")
         console.log("btnClose",btnClose)
         btnClose.addEventListener("click", () =>{  // function click close button
@@ -110,9 +107,8 @@ function addlightbox(photographer,filteredMedia) {
         btnNext.removeEventListener("click",next)
         btnPrev.removeEventListener("click",prev) 
                                                 }) 
-                                             }))
+                                             } }
 
-                                                 }
  function cleanPhotos() {
     const section = document.querySelector("section")
     
@@ -125,12 +121,15 @@ function addlightbox(photographer,filteredMedia) {
                             </div>
                           `
     section.innerHTML = emptyPhotosFrom;
-                        }            
+                        } 
+function cleanLightBoxPhotos() {
+    const emptyLightBox = ``
+    lightbox.innerHTML = emptyLightBox;
+}        
                       
 
 function filter(photographer,media){
     const select = document.querySelector("select"); 
-   
     var myArray1 = [];
     myArray1 = media.slice()
     var myArray2 = [];
@@ -153,32 +152,39 @@ function filter(photographer,media){
     console.log("myArray3",myArray3)
     console.log("myArray1",myArray1)
     console.log("myArray2",myArray2)
+    console.log("media",media)
     triLike(myArray1)
     triDate(myArray2);
     triTitle(myArray3)
-    cleanPhotos();
-    addPhotos(photographer,myArray1) ;
-
- 
-     select.addEventListener("change",() => { 
+    cleanLightBoxPhotos();
+    addlightbox(photographer,media);
+    select.addEventListener("change",() => { 
 
         if (select.value == "Popularité"){
-         
             cleanPhotos();
             addPhotos(photographer,myArray1) 
+            addDataId();
+            cleanLightBoxPhotos();
+            addlightbox(photographer,myArray1);
+
                                        }
         else if(select.value == "Date"){
 
             cleanPhotos();
-            addPhotos(photographer,myArray2)
+            addPhotos(photographer,myArray2);
+            addDataId();
+            cleanLightBoxPhotos();
+            addlightbox(photographer,myArray2);
                                     }
         else if(select.value == "Titre"){
-            
             cleanPhotos();
-            addPhotos(photographer,myArray3)
+            addPhotos(photographer,myArray3);
+            addDataId();
+            cleanLightBoxPhotos();
+            addlightbox(photographer,myArray3);
                                        }
         })  
-  
+    
     }
 
 
@@ -197,7 +203,8 @@ function filter(photographer,media){
     clicked = false;
     number.innerHTML --;   }
     
-    calculeSumLikes()                        })}}
+    calculeSumLikes()
+    addLikeByKey()                        })}}
     
     function calculeSumLikes(){  //calule total likes
         const divLike = document.getElementById("totallikes")
@@ -220,12 +227,9 @@ async function init() {
     const filteredMedia = getArryphotos(media); // Tableau d'image de photographer affiché
     displayHeader(photographer);  
     addPhotos(photographer,filteredMedia);
-    
-    
     encartFactory(photographer);
     filter(photographer,filteredMedia);
-    addDataId();
-    addlightbox(photographer,filteredMedia);
+    keyArrowGallery();
     addLike();
     calculeSumLikes();
 }
@@ -246,10 +250,10 @@ select.addEventListener("click",(e) =>{
     e.preventDefault();
 if(n%2 == 0){
     n += 1 ;
-    console.log("180deg",n)
+    
     arrow.appendChild(style1)}
 else {
     n += 1
     arrow.appendChild(style2)
-    console.log("360deg")}
+    }
 })

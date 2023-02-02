@@ -10,7 +10,7 @@ function displayModal() {
     modal.classList.add('modal-on');
 	  modal.style.display = "block";
     prenom.focus();
-    keyEscape();
+    modalkeyEscape();
 
 }
 

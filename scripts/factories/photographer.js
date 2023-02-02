@@ -34,7 +34,7 @@ function mediaFactory(photographer,media){
    function getPhotosCard(){
     const article = document.createElement( 'article' );
     const photosCard = `
-    <div class="photo">
+    <div tabindex="0" class="photo">
        <img src="${pathsImg}" alt="${title} fait en ${date} ">
     </div>
     <div aria-label="la titre du photo" class="photo_context">
@@ -42,22 +42,22 @@ function mediaFactory(photographer,media){
           <span>${title}</span>
        </div>
        <button type="button" title="mettre un like au post ${title}" class="photo_like"
-       aria-label="button pour liker" aria-pressed="false" tabindex="0">
+       aria-label="button pour liker" tabindex="0">
           <span class="like">${likes}</span>
           <img src="assets/icons/heart-icon.svg" alt="button pour rajouter like en form coeur"/>
        </buton>
     </div>
     `
     const videoCard = `
-    <div class="photo">
+    <div tabindex="0" class="photo">
        <video controls aria-label="${title} fait en ${date}> <source src="${pathsVideo}">
        </video>
     </div>
     <div aria-label="la titre du video" class="photo_context">
-      <div class="photo_title">
+      <div tabindex="0" class="photo_title">
         <span>${title}</span>
       </div>
-      <button type="button" class="photo_like">
+      <button type="button" class="photo_like" title="mettre un like au post ${title} "tabindex="0">
          <span class="like">${likes}</span>
          <img src="assets/icons/heart-icon.svg" alt="button pour rajouter like en form coeur"/>
       </buton>
@@ -90,14 +90,13 @@ function lightboxFactory(photographer,media){
     <div class="lightbox_img">
     <img src="${pathsImg}" alt="${title} fait en ${date}>
     </div>
-    <span class="photo_title" aria-label="la titre du photo" tabindex="0" >${title}</span>
+    <span class="photo_title" aria-label="le titre du photo" tabindex="0">${title}</span>
     `
     const videoCard = `
     <div class="lightbox_video">
     <video controls> <source src="${pathsVideo}" alt="${title} fait en ${date}></video>
     </div>
-    <span class="photo_title" aria-label="la titre du video" tabindex="0">${title}
-    </span>
+    <span class="photo_title" aria-label="le titre du video" tabindex="0">${title}</span>
     `
     if(!media.video){
         newdiv.innerHTML = photosCard;
@@ -115,13 +114,11 @@ function lightboxFactory(photographer,media){
 function encartFactory(photographer){
     
     const{price} = photographer;
-    
     const tarif = document.getElementById("encart_price")
-    tarif.innerHTML = price + "€/jour"
-    tarif.setAttribute("aria-label","le tarif est ${price} par jour")
-    
-   
-        return{price}
+    const prix = photographer.price
+    tarif.innerHTML = prix + "€/jour"
+    tarif.setAttribute("aria-label","le tarif est "+ prix+" € par jour")
+    return{price}
    }
 
    
