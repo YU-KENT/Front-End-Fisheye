@@ -1,22 +1,24 @@
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
-        
-        photographers.forEach((photographer) => {
-            const userCardDOM = photographerFactory(photographer).getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    }
-   
+async function displayData(photographers) {
+    const photographersSection = document.querySelector(".photographer_section");
 
-    async function displayPhotographers() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographersData();
-        
-        displayData(photographers);
-        keyarrowLeftRight();
+    photographers.forEach((photographer) => {
+        const userCardDOM = photographerFactory(photographer).getUserCardDOM();
+        photographersSection.appendChild(userCardDOM);
+    });
+}
 
-    };
-    
-    displayPhotographers();
-   
-    
+
+async function displayPhotographers() {
+    // Récupère les datas des photographes
+    const { photographers } = await getPhotographersData();
+
+    displayData(photographers);
+    keyarrowLeftRight();
+    focusInsidePage()
+    Tester()
+
+};
+
+displayPhotographers();
+
+

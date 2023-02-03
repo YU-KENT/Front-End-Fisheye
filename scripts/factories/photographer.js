@@ -5,7 +5,7 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
     const link = `photographer.html?id=${id}"`;
     function getUserCardDOM() {
-        const article = document.createElement( 'article' );
+        const article = document.createElement('article');
         const userCard = `
         <a href="${link}" target="blank" role="link" title="visiter la page de photographer ${name}"
         <div class="photographer-img"><img src="${picture}" alt="portrait de ${name}"></div>
@@ -19,21 +19,21 @@ function photographerFactory(data) {
         article.innerHTML = userCard
         return (article);
     }
-    
+
 
     return { name, portrait, city, country, tagline, price, id, getUserCardDOM }
 }
 
-function mediaFactory(photographer,media){
-    const{name, id, price} = photographer;
+function mediaFactory(photographer, media) {
+    const { name, id, price } = photographer;
     const { photographerId, title, image, video, likes, date } = media;
-    const pathsImg =`assets/images/${name}/${image}`;
+    const pathsImg = `assets/images/${name}/${image}`;
     const pathsVideo = `assets/images/${name}/${video}`;
-    
 
-   function getPhotosCard(){
-    const article = document.createElement( 'article' );
-    const photosCard = `
+
+    function getPhotosCard() {
+        const article = document.createElement('article');
+        const photosCard = `
     <div tabindex="0" class="photo">
        <img src="${pathsImg}" alt="${title} fait en ${date} ">
     </div>
@@ -48,7 +48,7 @@ function mediaFactory(photographer,media){
        </buton>
     </div>
     `
-    const videoCard = `
+        const videoCard = `
     <div tabindex="0" class="photo">
        <video controls aria-label="${title} fait en ${date}> <source src="${pathsVideo}">
        </video>
@@ -63,62 +63,62 @@ function mediaFactory(photographer,media){
       </buton>
     </div>
     `
-    if(!media.video){
-        article.innerHTML = photosCard;
+        if (!media.video) {
+            article.innerHTML = photosCard;
         }
 
-    else {
-        article.innerHTML = videoCard;
+        else {
+            article.innerHTML = videoCard;
         }
-    return (article);
-        }
+        return (article);
+    }
 
-    return{name, id, price, photographerId, title, likes, date, getPhotosCard}
+    return { name, id, price, photographerId, title, likes, date, getPhotosCard }
 }
 
 
-function lightboxFactory(photographer,media){
+function lightboxFactory(photographer, media) {
     const newdiv = document.createElement("div")
     newdiv.classList.add("lightbox_affiche")
-    const {name} = photographer;
-    const {image, video, title, date} = media;
-    const pathsImg =`assets/images/${name}/${image}`;
+    const { name } = photographer;
+    const { image, video, title, date } = media;
+    const pathsImg = `assets/images/${name}/${image}`;
     const pathsVideo = `assets/images/${name}/${video}`;
-    
-    function getLightboxCard(){
-    const photosCard = `
+
+    function getLightboxCard() {
+        const photosCard = `
     <div class="lightbox_img">
     <img src="${pathsImg}" alt="${title} fait en ${date}>
     </div>
     <span class="photo_title" aria-label="le titre du photo" tabindex="0">${title}</span>
     `
-    const videoCard = `
+        const videoCard = `
     <div class="lightbox_video">
     <video controls> <source src="${pathsVideo}" alt="${title} fait en ${date}></video>
     </div>
     <span class="photo_title" aria-label="le titre du video" tabindex="0">${title}</span>
     `
-    if(!media.video){
-        newdiv.innerHTML = photosCard;
+        if (!media.video) {
+            newdiv.innerHTML = photosCard;
         }
 
-    else {
-        newdiv.innerHTML = videoCard;
+        else {
+            newdiv.innerHTML = videoCard;
         }
-    return (newdiv)}
+        return (newdiv)
+    }
 
-    return{name,image,video,title,getLightboxCard}
-   }
+    return { name, image, video, title, getLightboxCard }
+}
 
 
-function encartFactory(photographer){
-    
-    const{price} = photographer;
+function encartFactory(photographer) {
+
+    const { price } = photographer;
     const tarif = document.getElementById("encart_price")
     const prix = photographer.price
     tarif.innerHTML = prix + "€/jour"
-    tarif.setAttribute("aria-label","le tarif est "+ prix+" € par jour")
-    return{price}
-   }
+    tarif.setAttribute("aria-label", "le tarif est " + prix + " € par jour")
+    return { price }
+}
 
-   
