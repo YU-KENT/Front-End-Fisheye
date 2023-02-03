@@ -3,6 +3,7 @@
 const id = new URL(location.href).searchParams.get("id")
 const lightbox = document.querySelector(".lightbox_container")
 const lightBtns = document.querySelector(".lightbox_buttons")
+const lightboxParent = document.querySelector(".lightbox")
 
 
 function getPhotographer(photographersData) {  // récupère data de photographer affiché
@@ -48,6 +49,7 @@ function addPhotos(photographer, medias) {
 function addlightbox(photographer, myArray) {
     const btnPrev = document.querySelector(".lightbox_prev")
     const btnNext = document.querySelector(".lightbox_next")
+    
     // creat lightbox
     myArray.forEach((media) => {
         const lightboxCardMode = lightboxFactory(photographer, media)
@@ -63,10 +65,15 @@ function addlightbox(photographer, myArray) {
 
     gallery.forEach((gal) => gal.addEventListener("click", openLightbox));
     function openLightbox(e) {  // add function open lightbox
+        var displaySetting = lightbox.style.display;
         const currentDataId = e.target.getAttribute("data-id")
         console.log("currentDataId", currentDataId)
+        if(displaySetting == "none"){
+            lightbox.style.display = "block"
+        }
+        else{
         lightboxgallery[currentDataId].classList.add("active")
-        lightBtns.classList.add("active")
+        lightBtns.classList.add("active")}
 
         // button next et button prev
         const arryLightboxgallery = Array.from(lightboxgallery); // transform nodelist to array
@@ -99,18 +106,35 @@ function addlightbox(photographer, myArray) {
         }
         //close button
 
+        
         const btnClose = document.querySelector(".lightbox_buttons.active .lightbox_close")
-        console.log("btnClose", btnClose)
-        btnClose.addEventListener("click", () => {  // function click close button
-            const lightboxAffiche = document.querySelector(".lightbox_affiche.active")
-            console.log("lightboxAffiche", lightboxAffiche)
-            lightboxAffiche.classList.remove("active")
-            lightBtns.classList.remove("active")
-            btnNext.removeEventListener("click", next)
-            btnPrev.removeEventListener("click", prev)
-        })
+        btnClose.addEventListener("click",closeLightbox)
+        function closeLightbox(e){  // function click close button
+         const lightBtns = document.querySelector(".lightbox_buttons")
+         const lightbox = document.querySelector(".lightbox_container")
+          console.log("btnClose", btnClose)
+
+          var displaySetting = window.getComputedStyle(lightbox,null).getPropertyValue("display");
+            console.log(displaySetting)
+            if(displaySetting == 'block'){
+                lightbox.style.display = "none";
+                lightBtns.style.display = "none";
+
+                console.log("关闭")
+                
+            }
+            else{
+                lightbox.style.display = "block"
+                lightBtns.style.display = "flex";
+                console.log("hqhqhq")
+              }
+       e.preventDefault()
+        
+        }
+            
+        }
     }
-}
+
 
 function cleanPhotos() {
     const section = document.querySelector("section")

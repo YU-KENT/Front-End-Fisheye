@@ -360,6 +360,13 @@ overflow: hidden;
   }
 
   /*lightbox*/
+  .lightbox{
+    position: relative;
+  }
+  .lightbox_container{
+   display:block;
+
+  }
  
   .lightbox_affiche{
     position: fixed;
@@ -374,6 +381,7 @@ overflow: hidden;
     /* transform: translateX(13%); */
    
   }
+ 
   .lightbox_affiche.active{
     display: flex;
     flex-direction: column;
@@ -428,7 +436,7 @@ overflow: hidden;
     height:42px;
     border:none;
     background: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="40" height="40" viewBox="0 0 24 24"%3E%3Cpath fill="%23901c1c" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"%2F%3E%3C%2Fsvg%3E');
-    position: fixed;
+    position:absolute;
     top:7%;
     right:10%;
 
@@ -439,13 +447,13 @@ overflow: hidden;
     width:50px;
     border:none;
     background: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="48" height="30" viewBox="0 0 24 24"%3E%3Cpath fill="%23901c1c" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225Z"%2F%3E%3C%2Fsvg%3E');
-    position: fixed;
+    position:absolute;
     top:50%;
     left:11%;
   }
 
   .lightbox_next{
-    position: fixed;
+    position: absolute;
     height:30px;
     width:50px;
     border:none;
@@ -470,7 +478,7 @@ overflow: hidden;
     border-radius: 5px;
     font-size: 24px;
     align-items: center;
-    z-index: 99;
+    
   }
   .encart:hover,.encart:focus{
     transform: scale(1.1);
@@ -601,5 +609,12 @@ overflow: hidden;
 @media only screen and (min-width: 1440px){
   body{
     width:1440px;
+  }
+  .lightbox_img img, .lightbox_video video{
+    max-width:1008px;
+  
+  }
+  .lightbox{
+    margin:0 auto;
   }
 }

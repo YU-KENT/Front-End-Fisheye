@@ -6,7 +6,6 @@ function focusInsidePage() {
     const firstFocusableElement = document.querySelectorAll(focusableElements)[0]; // get first element to be focused inside modal
     const focusableContent = document.querySelectorAll(focusableElements);
     const lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
-    console.log("lastFocusableElement", lastFocusableElement)
 
     document.addEventListener('keydown', function (e) {
         let isTabPressed = e.key === 'Tab';
@@ -23,16 +22,15 @@ function focusInsidePage() {
         }
     });
 
-    firstFocusableElement.focus()
 }
 
-function Tester() {
+/* function Tester() {
 
     document.addEventListener("keydown", (e) => {
         console.log("这里", document.activeElement)
     })
 }
-
+ */
 
 
 

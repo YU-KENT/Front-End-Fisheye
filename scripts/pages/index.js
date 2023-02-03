@@ -15,7 +15,7 @@ async function displayPhotographers() {
     displayData(photographers);
     keyarrowLeftRight();
     focusInsidePage()
-    Tester()
+    /* Tester() */
 
 };
 
