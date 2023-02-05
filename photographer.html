@@ -26,23 +26,28 @@
         <button class="contact_button" aria-label="button pour ouvrir la fenetre pour contacter le photographe" onclick="displayModal()">Contactez-moi</button>
       </div>
     <!--select box-->
-      <div class="select arrow">
-        <label for="select">Trier Par</label>
-          <select name="trier par" id="select-box" aria-label="button pour ouvrir le menu déroulant">
-            <option value="Popularité">Popularité</option>
-            <option value="Date">Date</option>
-            <option value="Titre">Titre</option>
-          </select>
-      </div>
+      <div id="selectbox">
+         <span role="label" class="label" aria-labelledby="selectbox">Trier Par</span>
+         <div class="select" role="menu" tabindex="0" arai-label="un dropdown menu pour tirier l'album des photos" >
+           <div class="pre-option arrowdown">Popularité</div>
+           <div class="options">
+             <div tabindex="0" class="arrowup">Popularité</div>
+             <div tabindex="0">Date</div>
+             <div tabindex="0">Titre</div>
+          </div>
+          </div>
+     </div>
     <!--modal album photos-->
       <section class="photos" tabindex="0" aria-label="l'album photos de photographer">
     <!--encart-->
         <div class="encart" tabindex="0" aria-label="un encart pour presenter le totale likes et tarif de photographer">
           <div class="encart_likes">
-          <span id="totallikes" aria-label="le photographe a total likes" tabindex="0"></span>
-          <img src="assets/icons/heart_black.svg" alt="icon image ceour">
+             <span id="totallikes" aria-label="le photographe a total likes" tabindex="0">
+            
+              <img src="assets/icons/heart_black.svg" aria-hidden="true" alt="icon image ceour"/>
+            
           </div>
-          <span id="encart_price" aria-label="le tarif est 300€ par jour" tabindex="0">300€/jour</span>      
+          <span id="encart_price" aria-label="le tarif est 300€ par jour" tabindex="0">300€/jour      
         </div>
       </section>
     <!--modal pour light box-->
@@ -83,7 +88,7 @@
           <div class="formData" aria-labelledby="message">
 						<label>Votre Message</label>
 						<textarea type="text" id="message" rows="4" aria-labelledby="Entrer message"></textarea>
-            <span id="Entrer message" class="hidden">Vous pouvez laisser un message</span>
+            <span id="Entrer message" class="hidden">Vous pouvez laisser un message
 					</div>
 
           <button type="submit" class="envoyer_button" aria-label="button pour envoyer le message">Envoyer</button>

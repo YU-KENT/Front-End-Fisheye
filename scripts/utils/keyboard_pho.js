@@ -15,7 +15,7 @@ function keyArrowLightbox(){ ///OK
     lightbox.addEventListener("keydown",(e)=>{
         if(e.key == "ArrowRight"){
             const AfficheIndex = arryLightboxgallery
-                .findIndex(e => e.classList.length == 2);  //find index
+                .findIndex(ele => ele.classList.length == 2);  //find index
              var plus = AfficheIndex + 1;
              if (plus == lightboxgallery.length) { plus = 0 } // last photo to first photo
 
@@ -50,15 +50,14 @@ function keyArrowGallery() {  ////ok
                 active -= 1;
                 gallery[active].focus();
                 console.log("left", active)
-            }
-        }
-        else if (e.key == "Enter") {
+                            }
+        }else if (e.key == "Enter") {
             if(activeElement.tagName =="DIV"){   //si focused element est un div.photo, ouvret lightbox
             const lightboxgallery = document.querySelectorAll(".lightbox_affiche")
             const dataId = e.target.firstElementChild.getAttribute("data-id")
             console.log("dataId", dataId)
             lightboxgallery[dataId].classList.add("active")
-            lightBtns.classList.add("active")}
+            lightboxBtns.classList.add("active")}
             else if(activeElement.tagName =="BUTTON"){ // si focused element est un button, add un like
               const number = activeElement.firstElementChild
               if(!pressed){
@@ -69,20 +68,17 @@ function keyArrowGallery() {  ////ok
               pressed = false;
               }  
               calculeSumLikes();               }
-        }
+          }else if(e.key == "Escape"){
+            document.activeElement.classList.remove("active")
+            lightboxBtns.classList.remove("active")
+            console.log("e.target",e.target);
+            console.log("Escape",document.activeElement)
+          }
     })
 }
 
-function Escapelightbox(){
-    lightbox.addEventListener("keydown",(e)=>{
-    if(e.key =="Escape"){
-    console.log("Escape",document.activeElement)
-
-    }
 
 
-    }
-    )}
 
  function Tester(){
 

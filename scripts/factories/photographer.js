@@ -88,13 +88,13 @@ function lightboxFactory(photographer, media) {
     function getLightboxCard() {
         const photosCard = `
     <div class="lightbox_img">
-    <img src="${pathsImg}" alt="${title} fait en ${date}>
+    <img src="${pathsImg}" alt="photo ${title} fait en ${date}>
     </div>
     <span class="photo_title" aria-label="le titre du photo" tabindex="0">${title}</span>
     `
         const videoCard = `
     <div class="lightbox_video">
-    <video controls> <source src="${pathsVideo}" alt="${title} fait en ${date}></video>
+    <video controls> <source src="${pathsVideo}" alt="video ${title} fait en ${date}></video>
     </div>
     <span class="photo_title" aria-label="le titre du video" tabindex="0">${title}</span>
     `

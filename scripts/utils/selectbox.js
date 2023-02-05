@@ -1,22 +1,55 @@
-// select-box, function arrow rotate
-/* const select = document.getElementById("select-box")
-const arrow = document.querySelector(".select.arrow")
-let style1 = document.createElement("style");
-let style2 = document.createElement("style");
-let text1 = document.createTextNode(".arrow::after{transform:rotate(180deg)}");
-let text2 = document.createTextNode(".arrow::after{transform:rotate(360deg)}");
-style1.appendChild(text1);
-style2.appendChild(text2);
-let n = 0
-select.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (n % 2 == 0) {
-        n += 1;
 
-        arrow.appendChild(style1)
+
+const sel = document.querySelector('.select');
+const label = document.querySelector('.pre-option');
+const options = document.querySelector('.options');
+
+options.setAttribute('hidden', true);
+
+sel.addEventListener('click', (e) => {
+    e.stopPropagation();
+    options.removeAttribute('hidden');
+    label.setAttribute('hidden', true)
+});
+
+
+   
+document.body.addEventListener('click', (e) => {
+    options.setAttribute('hidden', true);
+    label.removeAttribute('hidden');
+});
+
+
+options.addEventListener('click', (e) => {
+    if (e.target.tagName === 'DIV') {
+        e.stopPropagation();
+        label.textContent = e.target.textContent;
+        e.target.classList.add('selected');
+        Array.from(e.target.parentNode.children).forEach((child) => {
+            if (child !== e.target) {
+                child.classList.remove('selected');
+            }
+        });
+        options.setAttribute('hidden', true);
+        label.removeAttribute('hidden');
     }
-    else {
-        n += 1
-        arrow.appendChild(style2)
+});
+
+///selectbox keyboard
+document.addEventListener("keydown",()=>{
+    const optionsDiv = document.querySelectorAll('.options div');
+    const section = document.querySelector("section")
+    const sel = document.querySelector('.select');       
+      if(document.activeElement === sel){
+       options.removeAttribute('hidden');
+       label.setAttribute('hidden', true)
+    }else if(document.activeElement === optionsDiv[2]){
+        
+        options.setAttribute('hidden',true);
+        label.removeAttribute('hidden')
+
     }
-}) */
+    
+       
+           })
+
