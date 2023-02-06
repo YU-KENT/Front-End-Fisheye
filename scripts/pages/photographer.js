@@ -44,7 +44,12 @@ function addPhotos(photographer, medias) {
     })
     addDataId();
 }
-
+        //remove class"active"
+function removeActive(){
+            const allActive = document.querySelectorAll(".lightbox .active")
+           
+            allActive.forEach((active) => active.classList.remove("active"))
+        }
 
 function addlightbox(photographer, myArray) {
     const btnPrev = document.querySelector(".lightbox_prev")
@@ -86,11 +91,12 @@ function addlightbox(photographer, myArray) {
 
             var plus = AfficheIndex + 1;
 
-            if (plus == lightboxgallery.length) { plus = 0 } // last photo to first photo
+            if (plus < lightboxgallery.length) {  // last photo to first photo
 
             lightboxgallery[AfficheIndex].classList.remove("active")
             lightboxgallery[plus].classList.add("active")
             console.log("plus", plus)
+            } else return;
         }
 
         btnPrev.addEventListener("click", prev);   // add click function prev
@@ -100,22 +106,19 @@ function addlightbox(photographer, myArray) {
 
             var prev = AfficheIndex - 1;
 
-            if (AfficheIndex == 0) { prev = lightboxgallery.length - 1 } // fist photo to last photo
+            if (AfficheIndex > 0) {  // fist photo to last photo
             lightboxgallery[AfficheIndex].classList.remove("active")
             lightboxgallery[prev].classList.add("active")
+          }else return;
 
         }
-        //remove class"active"
-        function removeActive(){
-            const allActive = document.querySelectorAll(".lightbox .active")
-           
-            allActive.forEach((active) => active.classList.remove("active"))
-        }
+
         //close button
         const btnClose = document.querySelector(".lightbox_buttons.active .lightbox_close")
         btnClose.addEventListener("click",closeLightbox)
 
-        function closeLightbox(e){  // function click close button
+        function closeLightbox(e){ 
+            console.log(e.target) // function click close button
          var lightboxDisplaySetting = window.getComputedStyle(lightbox,null).getPropertyValue("display");
          var lightBtnsDisplaySetting = window.getComputedStyle(lightboxBtns,null).getPropertyValue("display");
     
@@ -194,9 +197,10 @@ function filterMedia(photographer, media) {
     triLike(myArray1)
     triDate(myArray2);
     triTitle(myArray3)
-    cleanLightBoxPhotos();
-    addlightbox(photographer, media);
+    
+    addlightbox(photographer, media); 
     addLike();
+    
     const options = document.querySelector('.options');
     const label = document.querySelector('.pre-option');
     options.addEventListener("click", clickFilter);
@@ -209,6 +213,7 @@ function filterMedia(photographer, media) {
             cleanLightBoxPhotos();
             addlightbox(photographer, myArray1);
             addLike();
+            
 
         }else if (e.target.textContent == "Date") {
 
@@ -218,6 +223,7 @@ function filterMedia(photographer, media) {
             cleanLightBoxPhotos();
             addlightbox(photographer, myArray2);
             addLike();
+            
         }else if (e.target.textContent == "Titre") {
             cleanPhotos();
             addPhotos(photographer, myArray3);
@@ -225,42 +231,43 @@ function filterMedia(photographer, media) {
             cleanLightBoxPhotos();
             addlightbox(photographer, myArray3);
             addLike();
+            
         }
     }
     function keyboardFilter(e){
         if (e.key == "Enter"){
-        if (e.target.textContent == "Popularité") {
+          if (e.target.textContent == "Popularité") {
             cleanPhotos();
             addPhotos(photographer, myArray1)
             addDataId();
             cleanLightBoxPhotos();
             addlightbox(photographer, myArray1);
             addLike();
-            calculeSumLikes()
+            
             label.textContent = "Popularité";
             options.setAttribute('hidden', true);
             label.removeAttribute('hidden');
 
-        }else if (e.target.textContent == "Date") {
+          }else if (e.target.textContent == "Date") {
             cleanPhotos();
             addPhotos(photographer, myArray2);
             addDataId();
             cleanLightBoxPhotos();
             addlightbox(photographer, myArray2);
             addLike();
-            calculeSumLikes()
+            
             label.textContent = "Date";
             options.setAttribute('hidden', true);
             label.removeAttribute('hidden');
 
-        }else if (e.target.textContent == "Titre") {
+          }else if (e.target.textContent == "Titre") {
             cleanPhotos();
             addPhotos(photographer, myArray3);
             addDataId();
             cleanLightBoxPhotos();
             addlightbox(photographer, myArray3);
             addLike();
-            calculeSumLikes()
+            
             label.textContent = "Titre";
             options.setAttribute('hidden', true);
             label.removeAttribute('hidden');
@@ -282,17 +289,12 @@ function addLike() {
             if (!clicked) {
                 clicked = true;
                 number.innerHTML++;
-            }
-            else {
+           }else {
                 clicked = false;
                 number.innerHTML--;
-
             }
-
-            calculeSumLikes()
-        }
-    }
-}
+            calculeSumLikes();
+        }}}
 
 function calculeSumLikes() {  //calule total likes
     const divLike = document.getElementById("totallikes")
@@ -304,7 +306,6 @@ function calculeSumLikes() {  //calule total likes
     }
     console.log(sum)
     divLike.innerHTML = sum;
-
 }
 
 async function init() {
@@ -316,12 +317,13 @@ async function init() {
     displayHeader(photographer);
     addPhotos(photographer, filteredMedia);
     encartFactory(photographer);
+    
     filterMedia(photographer, filteredMedia);
     
     keyArrowGallery();
     keyArrowLightbox()
     
-    calculeSumLikes();
+    
     Tester();  
    
 }

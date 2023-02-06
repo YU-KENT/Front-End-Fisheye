@@ -28,12 +28,12 @@
     <!--select box-->
       <div id="selectbox">
          <span role="label" class="label" aria-labelledby="selectbox">Trier Par</span>
-         <div class="select" role="menu" tabindex="0" arai-label="un dropdown menu pour tirier l'album des photos" >
+         <div class="select" role="dropdown menu" tabindex="0" arai-label="un dropdown menu pour tirier l'album des photos" >
            <div class="pre-option arrowdown">Popularité</div>
            <div class="options">
-             <div tabindex="0" class="arrowup">Popularité</div>
-             <div tabindex="0">Date</div>
-             <div tabindex="0">Titre</div>
+             <div tabindex="0" class="arrowup" aria-label="trier par Popularité">Popularité</div>
+             <div tabindex="0" aria-label="trier par Date">Date</div>
+             <div tabindex="0" aria-label="trier par Titre">Titre</div>
           </div>
           </div>
      </div>
@@ -62,12 +62,13 @@
        </div>
       </div>
     </main>
+    <!--contact formulaire-->
     <div id="contact_modal" role="dialog" aria-labelledby="currentname">
 			 <div class="modal">
 				<header tabindex="0" aria-label="header de la formulaire contact">
           <div class="header-text">
           <h2>Contactez-moi</h2>
-          <h2 id="currentname">${name}</h2>
+          <h2 id="currentname">name</h2>
          </div>
           <img src="assets/icons/close.svg" role="button" alt="button à click to close contact formulaire" tabindex="0" onclick="closeModal()" />
         </header>
@@ -75,20 +76,20 @@
         novalidate>
 					<div class="formData" aria-labelledby="firstname">
 						<label for="Prénom">Prénom</label>
-						<input type="text" name="Prénom" id="firstname" >
+						<input type="text" name="Prénom" id="firstname" aria-label="voulez entrer votre prenom">
 					</div>
           <div class="formData" aria-labelledby="lastname">
 						<label for="Nom">Nom</label>
-						<input type="text" name="Nom" id="lastname">
+						<input type="text" name="Nom" id="lastname" aria-label="voulez entrer votre nom">
 					</div>
           <div class="formData" aria-labelledby="email">
 						<label for ="email">Email</label>
-						<input type="email" name="email"id="email">
+						<input type="email" name="email"id="email"  aria-label="voulez entrer votre email">
 					</div>
           <div class="formData" aria-labelledby="message">
-						<label>Votre Message</label>
+						<label for ="message">Votre Message</label>
 						<textarea type="text" id="message" rows="4" aria-labelledby="Entrer message"></textarea>
-            <span id="Entrer message" class="hidden">Vous pouvez laisser un message
+            <span id="Entrer message" class="hidden">Vous pouvez laisser un message</span>
 					</div>
 
           <button type="submit" class="envoyer_button" aria-label="button pour envoyer le message">Envoyer</button>
