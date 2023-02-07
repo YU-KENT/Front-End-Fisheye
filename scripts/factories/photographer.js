@@ -7,7 +7,7 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         const article = document.createElement('article');
         const userCard = `
-        <a href="${link}" target="blank" role="link" title="visiter la page de photographer ${name}"
+        <a href="${link}" role="link" title="visiter la page de photographer ${name}"
         <div class="photographer-img"><img src="${picture}" alt="portrait de ${name}"></div>
         <div class="photographer-info" aria-label="information de photographer ${name}">
         <h2>${name}</h2>
