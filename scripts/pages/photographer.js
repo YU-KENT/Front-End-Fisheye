@@ -16,8 +16,7 @@ function getArryphotos(media) {   // récupère media data de photographer affic
     return (arryPhotos);
 }
 
-
-function displayHeader(photographer) {
+function displayHeader(photographer) { //
     const pageHeader = document.querySelector(".photograph-header");
     const photographerMode = photographerFactory(photographer);
     const userCardDOM = photographerMode.getUserCardDOM();
@@ -29,14 +28,14 @@ function displayHeader(photographer) {
 
 };
 
-function addDataId() {
+function addDataId() {  //rajouter "data-id" a chaque photo
     const gallery = document.querySelectorAll(".photo") // get dom image or video
     for (i = 0; i < gallery.length; i++) {
         const gal = gallery[i].firstElementChild
         gal.setAttribute("data-id", i);
     }
 }
-function addPhotos(photographer, medias) {
+function addPhotos(photographer, medias) { //creat l'abulm photo
     const cardSection = document.querySelector(".photos")
     medias.forEach((media) => {
         const card = mediaFactory(photographer, media).getPhotosCard();
@@ -44,18 +43,13 @@ function addPhotos(photographer, medias) {
     })
     addDataId();
 }
-        //remove class"active"
-function removeActive(){
-            const allActive = document.querySelectorAll(".lightbox .active")
-           
-            allActive.forEach((active) => active.classList.remove("active"))
-        }
+
 
 function addlightbox(photographer, myArray) {
     const btnPrev = document.querySelector(".lightbox_prev")
     const btnNext = document.querySelector(".lightbox_next")
-    
-    // creat lightbox
+
+    // creer photos de lightbox
     myArray.forEach((media) => {
         const lightboxCardMode = lightboxFactory(photographer, media)
         const lightboxCard = lightboxCardMode.getLightboxCard()
@@ -64,93 +58,86 @@ function addlightbox(photographer, myArray) {
 
     // l'affichage de photo lightbox
     const lightboxgallery = document.querySelectorAll(".lightbox_affiche")
-    /* console.log("lightboxgallery", lightboxgallery) */
     const gallery = document.querySelectorAll(".photo");// get images 
-    console.log("gallery", gallery)
 
     gallery.forEach((gal) => gal.addEventListener("click", openLightbox));
     function openLightbox(e) {  // add function open lightbox
         const currentDataId = e.target.getAttribute("data-id")
-        var lightboxDisplaySetting = window.getComputedStyle(lightbox,null).getPropertyValue("display");
-        if(lightboxDisplaySetting == 'none'){
+        var lightboxDisplaySetting = window.getComputedStyle(lightbox, null).getPropertyValue("display");
+        if (lightboxDisplaySetting == 'none') {
             lightbox.style.display = "block";
             lightboxgallery[currentDataId].classList.add("active");
             lightboxBtns.classList.add("active");
-        }else{
-        console.log("currentDataId", currentDataId);
-        lightboxgallery[currentDataId].classList.add("active");
-        lightboxBtns.classList.add("active")};
+        } else {
+            console.log("currentDataId", currentDataId);
+            lightboxgallery[currentDataId].classList.add("active");
+            lightboxBtns.classList.add("active")
+        };
 
         // button next et button prev
-        const arryLightboxgallery = Array.from(lightboxgallery); // transform nodelist to array
-
+        const arryLightboxgallery = Array.from(lightboxgallery); // transform nodelist à l'array
         btnNext.addEventListener("click", next)
-        function next() {   // add click function next
+        function next() {   // rajoute le fonction click "next"
             const AfficheIndex = arryLightboxgallery
-                .findIndex(e => e.classList.length == 2);  //find index
-
+                .findIndex(e => e.classList.length == 2);  //touve index de lightbox photo affiché
             var plus = AfficheIndex + 1;
-
-            if (plus < lightboxgallery.length) {  // last photo to first photo
-
-            lightboxgallery[AfficheIndex].classList.remove("active")
-            lightboxgallery[plus].classList.add("active")
-            console.log("plus", plus)
+            if (plus < lightboxgallery.length) {  
+                lightboxgallery[AfficheIndex].classList.remove("active")
+                lightboxgallery[plus].classList.add("active")
+                console.log("plus", plus)
             } else return;
         }
 
-        btnPrev.addEventListener("click", prev);   // add click function prev
+        btnPrev.addEventListener("click", prev);   // rajoute click fonction "prev"
         function prev() {
             const AfficheIndex = arryLightboxgallery
                 .findIndex(e => e.classList.length == 2);
-
             var prev = AfficheIndex - 1;
-
-            if (AfficheIndex > 0) {  // fist photo to last photo
-            lightboxgallery[AfficheIndex].classList.remove("active")
-            lightboxgallery[prev].classList.add("active")
-          }else return;
+            if (AfficheIndex > 0) {  
+                lightboxgallery[AfficheIndex].classList.remove("active")
+                lightboxgallery[prev].classList.add("active")
+            } else return;
 
         }
 
-        //close button
+        //fonction button close
         const btnClose = document.querySelector(".lightbox_buttons.active .lightbox_close")
-        btnClose.addEventListener("click",closeLightbox)
+        btnClose.addEventListener("click", closeLightbox)
 
-        function closeLightbox(e){ 
+        function closeLightbox(e) {
             console.log(e.target) // function click close button
-         var lightboxDisplaySetting = window.getComputedStyle(lightbox,null).getPropertyValue("display");
-         var lightBtnsDisplaySetting = window.getComputedStyle(lightboxBtns,null).getPropertyValue("display");
-    
+            var lightboxDisplaySetting = window.getComputedStyle(lightbox, null).getPropertyValue("display");
+            var lightBtnsDisplaySetting = window.getComputedStyle(lightboxBtns, null).getPropertyValue("display");
+            // recupere style "display"
             console.log(lightBtnsDisplaySetting);
-            if(lightboxDisplaySetting == 'block'){
-                if(lightBtnsDisplaySetting =='flex'){
-                    
-                lightbox.style.display = "none";
-                lightboxBtns.classList.remove("active")
-                removeActive();
-                }else{
-                lightbox.style.display = "none";
-                console.log("kkkk")
+            if (lightboxDisplaySetting == 'block') {
+                if (lightBtnsDisplaySetting == 'flex') {
+                    lightbox.style.display = "none";
+                    lightboxBtns.classList.remove("active")
+                    removeActive();
+                } else {
+                    lightbox.style.display = "none";
                 }
-
                 console.log("关闭")
-                
-            }else {
-                lightbox.style.display = "block"} 
-           e.preventDefault();
-           btnNext.removeEventListener("click", next);
-           btnPrev.removeEventListener("click", prev);
-        
-        }
-            
-        } 
-    }
+
+            } else {
+                lightbox.style.display = "block"
+            }
+            e.preventDefault();
+            btnNext.removeEventListener("click", next);  // quand fermer lightbox
+            btnPrev.removeEventListener("click", prev);//surprimer les tâches des event
+        }}
+        calculeSumLikes();
+}
+
+function removeActive() { //surprimer class"active" de lightbox photo
+    const allActive = document.querySelectorAll(".lightbox .active")
+    allActive.forEach((active) => active.classList.remove("active"))
+}
 
 
-function cleanPhotos() {
+function cleanPhotos() { //surprimer l'abulm photo
     const section = document.querySelector("section")
-
     const emptyPhotosFrom = `<div class="encart">
                                 <div class="encart_likes">
                                 <span id="totallikes"></span>
@@ -161,32 +148,36 @@ function cleanPhotos() {
                           `
     section.innerHTML = emptyPhotosFrom;
 }
-function cleanLightBoxPhotos() {
+
+function cleanLightBoxPhotos() { //surprimer lightbox photo
     const emptyLightBox = ``
     lightbox.innerHTML = emptyLightBox;
 }
 
+function filterMedia(photographer, media) { 
+    addlightbox(photographer, media);
+    addLike();
 
-function filterMedia(photographer, media) {
-    
-    var myArray1 = [];
+   // creer 3 tableaux
+    var myArray1 = []; 
     myArray1 = media.slice()
     var myArray2 = [];
     myArray2 = media.slice()
     var myArray3 = [];
     myArray3 = media.slice()
 
-    function triLike(myArray) {
+    function triLike(myArray) { //trier le tableau par nom de likes
         return myArray.sort((a, b) => b.likes - a.likes);
     };
     function triDate(myArray) {
-        myArray.sort((a, b) => {
+        
+        myArray.sort((a, b) => { //trier le tableau par la date plus récente
             const bDate = new Date((b.date).replace(/-/g, "/"))
             const aDate = new Date((a.date).replace(/-/g, "/"))
             return bDate - aDate
         })
     };
-    function triTitle(myArray) {
+    function triTitle(myArray) { //trier le tableau par premier lettre de titre
         myArray.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
     };
 
@@ -197,15 +188,12 @@ function filterMedia(photographer, media) {
     triLike(myArray1)
     triDate(myArray2);
     triTitle(myArray3)
-    
-    addlightbox(photographer, media); 
-    addLike();
-    
+
     const options = document.querySelector('.options');
     const label = document.querySelector('.pre-option');
     options.addEventListener("click", clickFilter);
-    options.addEventListener("keydown", keyboardFilter); 
-    function clickFilter(e) {
+    options.addEventListener("keydown", keyboardFilter);
+    function clickFilter(e) {  // fonction click pour tirer
         if (e.target.textContent == "Popularité") {
             cleanPhotos();
             addPhotos(photographer, myArray1)
@@ -213,9 +201,9 @@ function filterMedia(photographer, media) {
             cleanLightBoxPhotos();
             addlightbox(photographer, myArray1);
             addLike();
-            
 
-        }else if (e.target.textContent == "Date") {
+
+        } else if (e.target.textContent == "Date") {
 
             cleanPhotos();
             addPhotos(photographer, myArray2);
@@ -223,78 +211,78 @@ function filterMedia(photographer, media) {
             cleanLightBoxPhotos();
             addlightbox(photographer, myArray2);
             addLike();
-            
-        }else if (e.target.textContent == "Titre") {
+
+        } else if (e.target.textContent == "Titre") {
             cleanPhotos();
             addPhotos(photographer, myArray3);
             addDataId();
             cleanLightBoxPhotos();
             addlightbox(photographer, myArray3);
             addLike();
-            
+
         }
     }
-    function keyboardFilter(e){
-        if (e.key == "Enter"){
-          if (e.target.textContent == "Popularité") {
-            cleanPhotos();
-            addPhotos(photographer, myArray1)
-            addDataId();
-            cleanLightBoxPhotos();
-            addlightbox(photographer, myArray1);
-            addLike();
-            
-            label.textContent = "Popularité";
-            options.setAttribute('hidden', true);
-            label.removeAttribute('hidden');
+    function keyboardFilter(e) {  // fonction keyboard pour tirer
+        if (e.key == "Enter") {
+            if (e.target.textContent == "Popularité") {
+                cleanPhotos();
+                addPhotos(photographer, myArray1)
+                addDataId();
+                cleanLightBoxPhotos();
+                addlightbox(photographer, myArray1);
+                addLike();
 
-          }else if (e.target.textContent == "Date") {
-            cleanPhotos();
-            addPhotos(photographer, myArray2);
-            addDataId();
-            cleanLightBoxPhotos();
-            addlightbox(photographer, myArray2);
-            addLike();
-            
-            label.textContent = "Date";
-            options.setAttribute('hidden', true);
-            label.removeAttribute('hidden');
+                label.textContent = "Popularité"; // fermer dropdown menu
+                options.setAttribute('hidden', true);
+                label.removeAttribute('hidden');
 
-          }else if (e.target.textContent == "Titre") {
-            cleanPhotos();
-            addPhotos(photographer, myArray3);
-            addDataId();
-            cleanLightBoxPhotos();
-            addlightbox(photographer, myArray3);
-            addLike();
-            
-            label.textContent = "Titre";
-            options.setAttribute('hidden', true);
-            label.removeAttribute('hidden');
-                 }}
+            } else if (e.target.textContent == "Date") {
+                cleanPhotos();
+                addPhotos(photographer, myArray2);
+                addDataId();
+                cleanLightBoxPhotos();
+                addlightbox(photographer, myArray2);
+                addLike();
 
-    }
+                label.textContent = "Date";
+                options.setAttribute('hidden', true);
+                label.removeAttribute('hidden');
+
+            } else if (e.target.textContent == "Titre") {
+                cleanPhotos();
+                addPhotos(photographer, myArray3);
+                addDataId();
+                cleanLightBoxPhotos();
+                addlightbox(photographer, myArray3);
+                addLike();
+
+                label.textContent = "Titre";
+                options.setAttribute('hidden', true);
+                label.removeAttribute('hidden');
+            }}}
 
 }
 
-
-function addLike() {
+function addLike() { //fonction rajoute un seul like
     const btnLike = document.querySelectorAll("button.photo_like")
     for (var i = 0; i < btnLike.length; i++) {
         let clicked = false;
 
         btnLike[i].addEventListener("click", add)
-        function add(e){
+        function add(e) {
             const number = e.target.parentNode.firstElementChild
             if (!clicked) {
                 clicked = true;
                 number.innerHTML++;
-           }else {
+                calculeSumLikes();
+            } else {  //si click encore, redure un like
                 clicked = false;
                 number.innerHTML--;
+                calculeSumLikes();
             }
-            calculeSumLikes();
-        }}}
+        }
+    }
+}
 
 function calculeSumLikes() {  //calule total likes
     const divLike = document.getElementById("totallikes")
@@ -317,15 +305,12 @@ async function init() {
     displayHeader(photographer);
     addPhotos(photographer, filteredMedia);
     encartFactory(photographer);
-    
     filterMedia(photographer, filteredMedia);
-    
     keyArrowGallery();
-    keyArrowLightbox()
-    
-    
-    Tester();  
-   
+    keyArrowLightbox();
+    focusInsidePage();
+    Tester(); 
+
 }
 
 init();

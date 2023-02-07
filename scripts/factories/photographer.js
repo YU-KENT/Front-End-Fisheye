@@ -35,26 +35,27 @@ function mediaFactory(photographer, media) {
         const article = document.createElement('article');
         const photosCard = `
     <div tabindex="0" class="photo">
-       <img src="${pathsImg}" alt="${title} fait en ${date} ">
+       <img src="${pathsImg}" alt="ce photo ${title} est fait en ${date}">
     </div>
-    <div aria-label="la titre du photo" class="photo_context">
+    <div aria-label="la titre et nom du likes de photo" class="photo_context">
        <div tabindex="0" class="photo_title">
           <span>${title}</span>
        </div>
        <button type="button" title="mettre un like au post ${title}" class="photo_like"
        aria-label="button pour liker" tabindex="0">
           <span class="like">${likes}</span>
-          <img src="assets/icons/heart-icon.svg" alt="button pour rajouter like en form coeur"/>
+          <img src="assets/icons/heart-icon.svg" alt="button pour rajouter like en form coeur">
        </buton>
     </div>
     `
         const videoCard = `
     <div tabindex="0" class="photo">
-       <video controls aria-label="${title} fait en ${date}> <source src="${pathsVideo}">
+       <video controls aria-label="${title} est fait en ${date}" tabindex ="-1"> 
+       <source src="${pathsVideo}">
        </video>
     </div>
-    <div aria-label="la titre du video" class="photo_context">
-      <div tabindex="0" class="photo_title">
+    <div aria-label="la titre et nom du likes de video" class="photo_context">
+      <div class="photo_title" tabindex="0">
         <span>${title}</span>
       </div>
       <button type="button" class="photo_like" title="mettre un like au post ${title} "tabindex="0">
@@ -88,15 +89,18 @@ function lightboxFactory(photographer, media) {
     function getLightboxCard() {
         const photosCard = `
     <div class="lightbox_img">
-    <img src="${pathsImg}" alt="photo ${title} fait en ${date}>
+       <img src="${pathsImg}" alt="ce photo ${title} est fait en ${date}" tabindex="0">
     </div>
-    <span class="photo_title" aria-label="le titre du photo" tabindex="0">${title}</span>
+    <span class="photo_title" aria-label="le titre du photo" tabindex="0" >${title}
+    </span>
+    
     `
         const videoCard = `
     <div class="lightbox_video">
-    <video controls> <source src="${pathsVideo}" alt="video ${title} fait en ${date}></video>
+       <video controls> <source src="${pathsVideo}" alt="ce video ${title} est fait en ${date}" tabindex="0"></video>
     </div>
-    <span class="photo_title" aria-label="le titre du video" tabindex="0">${title}</span>
+    <span class="photo_title" aria-label="le titre du video" tabindex="0">${title}
+    </span>
     `
         if (!media.video) {
             newdiv.innerHTML = photosCard;

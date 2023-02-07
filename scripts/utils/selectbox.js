@@ -1,29 +1,24 @@
-
-
 const sel = document.querySelector('.select');
 const label = document.querySelector('.pre-option');
 const options = document.querySelector('.options');
 
 options.setAttribute('hidden', true);
-
+// ouvrir dropdown menu
 sel.addEventListener('click', (e) => {
     e.stopPropagation();
     options.removeAttribute('hidden');
     label.setAttribute('hidden', true)
 });
-
-
-   
+// click dehors, fermer dropdown menu
 document.body.addEventListener('click', (e) => {
     options.setAttribute('hidden', true);
     label.removeAttribute('hidden');
 });
-
-
+//chosir select option
 options.addEventListener('click', (e) => {
     if (e.target.tagName === 'DIV') {
         e.stopPropagation();
-        label.textContent = e.target.textContent;
+        label.textContent = e.target.textContent; //selected option egale premièr label option
         e.target.classList.add('selected');
         Array.from(e.target.parentNode.children).forEach((child) => {
             if (child !== e.target) {
@@ -35,21 +30,16 @@ options.addEventListener('click', (e) => {
     }
 });
 
-///selectbox keyboard
-document.addEventListener("keydown",()=>{
+///selectbox keyboard fonction
+document.addEventListener("keydown", () => {
     const optionsDiv = document.querySelectorAll('.options div');
-    const section = document.querySelector("section")
-    const sel = document.querySelector('.select');       
-      if(document.activeElement === sel){
-       options.removeAttribute('hidden');
-       label.setAttribute('hidden', true)
-    }else if(document.activeElement === optionsDiv[2]){
-        
-        options.setAttribute('hidden',true);
-        label.removeAttribute('hidden')
-
+    const sel = document.querySelector('.select');
+    if (document.activeElement === sel) {  //si element focused est ".select"
+        options.removeAttribute('hidden'); //ouvrir dropdown menu
+        label.setAttribute('hidden', true) 
+    } else if (document.activeElement === optionsDiv[2]) {  // si le dernier option est focused
+        options.setAttribute('hidden', true); //fermer dropdown menu
+        label.removeAttribute('hidden');
     }
-    
-       
-           })
+})
 

@@ -5,21 +5,19 @@ const message = document.getElementById("message")
 const formulaire = document.getElementById("myform")
 const formData = document.querySelectorAll(".formData")
 
-function displayModal() {
+function displayModal() {  //ouvert contact form
   const modal = document.getElementById("contact_modal");
   modal.classList.add('modal-on');
   modal.style.display = "block";
-  prenom.focus();
-  modalkeyEscape();
-
+  prenom.focus(); //input prenom focus
+  modalkeyEscape(); //fonction keyboard fermer le contact form
 }
 
-function closeModal() {
+function closeModal() {  // fonction "click" pour fermer le contact form
   const modal = document.getElementById("contact_modal");
   modal.classList.remove('modal-on');
   modal.style.display = "none";
 }
-
 
 
 formulaire.addEventListener("submit", validate)
@@ -28,10 +26,10 @@ function validate(event) {
   event.stopPropagation();
   const conditions = //array for all validations
     [validatePrenom(), validateNom(), validateEmail(), validateMessage()];
+
   if (conditions.some(valid => !valid)) {  // filter all function,if there is 1 or plus invalidate function, return false
     return;
-  }  // else there is 0 invalide function
-  else {
+  } else { // else there is 0 invalide function
     alert("votre message est bien engistré"); // show confirmation 
     location.reload();
 
@@ -44,11 +42,9 @@ function validatePrenom() {
     formData[0].setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du prenom");
     formData[0].setAttribute("data-error-visible", true);// add message error
     return false;
-  }
-  else {
+  } else {
     formData[0].removeAttribute('data-error');   // if it's correct remove message arror
     formData[0].removeAttribute('data-error-visible');
-
     return true;
   }
 
@@ -61,11 +57,9 @@ function validateNom() {
     formData[1].setAttribute('data-error-visible', true);
     return false;
 
-  }
-  else {
+  } else {
     formData[1].removeAttribute('data-error');
     formData[1].removeAttribute('data-error-visible');
-
     return true;
   }
 };
@@ -81,12 +75,9 @@ function validateEmail() {
     formData[2].setAttribute('data-error-visible', true);
 
     return false;
-  }
-
-  else {
+  } else {
     formData[2].removeAttribute('data-error');
     formData[2].removeAttribute('data-error-visible');
-
     return true;
 
   }
@@ -99,11 +90,9 @@ function validateMessage() {
     formData[3].setAttribute('data-error-visible', true);
     return false;
 
-  }
-  else {
+  } else {
     formData[3].removeAttribute('data-error');
     formData[3].removeAttribute('data-error-visible');
-
     return true;
   }
 };

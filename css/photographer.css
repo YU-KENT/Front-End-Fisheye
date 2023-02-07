@@ -377,6 +377,7 @@ overflow: hidden;
  
   .lightbox_affiche{
     display:flex;
+    flex-direction: column;
     justify-content: flex-start;
     position: fixed;
     top:0;
@@ -395,8 +396,11 @@ overflow: hidden;
   }  
  
 
-  .lightbox .photo_title{
+  .lightbox_affiche .photo_title{
     font-weight: 400;
+    margin-left: 15%;
+    margin-top: 10px;
+    font-size: 24px;
     
   }
 
@@ -482,7 +486,7 @@ overflow: hidden;
     display: flex;
     justify-content: space-between;
     position:fixed;
-    right:30px;
+    right:15%;
     bottom: 0%;
     border-radius: 5px;
     font-size: 24px;
@@ -523,7 +527,9 @@ overflow: hidden;
     .photo_context{
       padding-left: 114px;
     }
-    
+    .photo_title{
+      margin-left: -30px;
+    }
     
     .logo { 
         margin-left: 20px;
@@ -551,20 +557,24 @@ overflow: hidden;
   }
 
   @media only screen and (max-width: 799.98px) {
+    
     section.photos {
       display:flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin: 0px 50px;
+      margin: 50px 50px;
       background-color:#FAFAFA;
     }
     .photograph-header{
       margin:0 50px;
     }
     .contact_button{
-      right: 35%;
-      top: 51%;} 
+      position: relative;
+      right: -38%;
+      top: 60%;
+      height: 60px;
+    } 
 
     .photograph-header{
       display: flex;
@@ -601,6 +611,7 @@ overflow: hidden;
    }
    .photograph-header article span{
     font-size: 15px;
+    margin-bottom: 25px;
    }
    .modal{
     width:70%;
@@ -609,7 +620,10 @@ overflow: hidden;
    form label{
     font-size: 20px;
    }
-   
+   .select .pre-option{
+    padding: 8px 10px;
+    
+   }
 }
 
 @media only screen and (min-width: 1440px){
@@ -626,6 +640,28 @@ overflow: hidden;
   .lightbox{
     margin:0 auto;
   }
-  .lightbox_affiche.active{
-   
-}}
+  }
+
+  @media only screen and (max-width: 440px){
+    .contact_button{
+      right:-26%;
+    }
+    .photograph-header article h2{
+      font-size: 28px;
+    }
+    .encart{
+      width: 240px;
+      height: 50px;
+      right:75px;
+    }
+    #totallikes{
+      margin-left: 14%;
+    }
+  
+  }
+  
+  @media only screen and (max-width: 380px){
+    .contact_button{
+      right:-21%;
+    }
+  }

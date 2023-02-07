@@ -3,66 +3,45 @@ function focusInsidePage() {
     const focusableElements =
         'section a,[tabindex="0"]';
 
-    const firstFocusableElement = document.querySelectorAll(focusableElements)[0]; // get first element to be focused inside modal
+    const firstFocusableElement = document.querySelectorAll(focusableElements)[0]; // recupere premier element dans la page
     const focusableContent = document.querySelectorAll(focusableElements);
-    const lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside modal
+    const lastFocusableElement = focusableContent[focusableContent.length - 1]; // recupere dernier element dans la page
 
     document.addEventListener('keydown', function (e) {
         let isTabPressed = e.key === 'Tab';
-
         if (!isTabPressed) {
             return;
-        }
-
-        else { // if tab key is pressed
-            if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
-                firstFocusableElement.focus(); // add focus for the first focusable element
+        } else { // si "tab" key est appuyé
+            if (document.activeElement === lastFocusableElement) { // focused element est dernier element
+                firstFocusableElement.focus(); // premier element est focused
                 e.preventDefault();
-            }
-        }
-    });
-
-}
-
-/* function Tester() {
-
-    document.addEventListener("keydown", (e) => {
-        console.log("这里", document.activeElement)
+                }}
     })
 }
- */
-
-
-
-
-
-
-
-
-
-
 
 let active = -1;
-function keyarrowLeftRight() {  ////ok
-
+function keyarrowLeftRight() {  //fonction, appuye"right" et "left" pour naviguer les photographers
     document.addEventListener("keydown", (e) => {
         const sectionArtciles = document.querySelectorAll(".photographer_section article a")
         const articleLength = sectionArtciles.length
-
-        if (e.key == "ArrowRight") {// right
+        if (e.key == "ArrowRight") {
             if (active < articleLength - 1)
                 active += 1;
             sectionArtciles[active].focus();
             console.log("right", active)
 
-        }
-        else if (e.key == "ArrowLeft") {//left
+        }else if (e.key == "ArrowLeft") {
             if (active > 0) {
                 active -= 1;
                 sectionArtciles[active].focus();
                 console.log("left", active)
             }
         }
+    })
+}
+function Tester() {
 
+    document.addEventListener("keydown", (e) => {
+        console.log(e.key, document.activeElement)
     })
 }
