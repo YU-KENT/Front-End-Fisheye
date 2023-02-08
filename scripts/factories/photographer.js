@@ -16,12 +16,24 @@ function photographerFactory(data) {
         <span class="fs-9">${price}€/jour</span>
         </div>
         </a>`
-        article.innerHTML = userCard
-        return (article);
+        article.innerHTML = userCard;
+        return (article);}
+
+    function getheaderCardDOM() {
+        const article = document.createElement('article');
+        const headerCard = `
+        <div class="photographer-img"><img src="${picture}" alt="portrait de ${name}"></div>
+        <div class="photographer-info" aria-label="information de photographer ${name}">
+        <h2>${name}</h2>
+        <p>${city}, ${country}</p>
+        <span>${tagline}</span>
+        </div>
+        `
+        article.innerHTML = headerCard
+        return (article );
     }
 
-
-    return { name, portrait, city, country, tagline, price, id, getUserCardDOM }
+    return { name, portrait, city, country, tagline, price, id, getUserCardDOM, getheaderCardDOM }
 }
 
 function mediaFactory(photographer, media) {

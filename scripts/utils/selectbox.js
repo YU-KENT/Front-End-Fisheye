@@ -36,7 +36,7 @@ document.addEventListener("keydown", () => {
     const sel = document.querySelector('.select');
     if (document.activeElement === sel) {  //si element focused est ".select"
         options.removeAttribute('hidden'); //ouvrir dropdown menu
-        label.setAttribute('hidden', true) 
+        label.setAttribute('hidden', true)
     } else if (document.activeElement === optionsDiv[2]) {  // si le dernier option est focused
         options.setAttribute('hidden', true); //fermer dropdown menu
         label.removeAttribute('hidden');

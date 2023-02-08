@@ -16,16 +16,11 @@ function getArryphotos(media) {   // récupère media data de photographer affic
     return (arryPhotos);
 }
 
-function displayHeader(photographer) { //
+function displayHeader(photographer) { // cree un artcile de photographer dans header
     const pageHeader = document.querySelector(".photograph-header");
     const photographerMode = photographerFactory(photographer);
-    const userCardDOM = photographerMode.getUserCardDOM();
-    pageHeader.appendChild(userCardDOM);
-
-    document.querySelector(".photograph-header a").removeAttribute("href");
-    const price = document.querySelector(".photograph-header .fs-9");
-    price.style.display = "none";
-
+    const headerCardDOM = photographerMode.getheaderCardDOM();
+    pageHeader.appendChild(headerCardDOM);
 };
 
 function addDataId() {  //rajouter "data-id" a chaque photo
@@ -306,7 +301,7 @@ async function init() {
     addPhotos(photographer, filteredMedia);
     encartFactory(photographer);
     filterMedia(photographer, filteredMedia);
-    keyArrowGallery();
+    keyArrowGallery(); 
     keyArrowLightbox();
     focusInsidePage();
     Tester(); 

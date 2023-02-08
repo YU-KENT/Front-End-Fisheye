@@ -83,7 +83,6 @@ function validateEmail() {
   }
 }
 
-
 function validateMessage() {
   if (message.value.trim() === "") /* not empty or at least 2 characters */ {
     formData[3].setAttribute('data-error', 'Votre message ne doit pas être vide');

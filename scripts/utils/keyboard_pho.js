@@ -20,7 +20,7 @@ function keyArrowGallery() {  /// fonction keyboard pour l'abulm photo
         const galleryLength = gallery.length
         const lightboxgallery = document.querySelectorAll(".lightbox_affiche")
 
-        
+
         if (e.key == "ArrowRight") {//appuye "right",focus le prochain photo
             if (active < galleryLength - 1)
                 active += 1;
@@ -42,7 +42,7 @@ function keyArrowGallery() {  /// fonction keyboard pour l'abulm photo
             } else if (activeElement.tagName == "BUTTON") { // si focused element est un button, add un like
                 const number = activeElement.firstElementChild
                 if (!pressed) {
-                    number.innerHTML++; 
+                    number.innerHTML++;
                     pressed = true;
                 }
                 else {
@@ -50,9 +50,10 @@ function keyArrowGallery() {  /// fonction keyboard pour l'abulm photo
                     pressed = false;
                 }
                 calculeSumLikes();
-            }}
-      })
-    
+            }
+        }
+    })
+
 }
 
 
@@ -75,7 +76,7 @@ function keyArrowLightbox() { ///fonction keyboard pour lightbox
 
         } else if (e.key == "ArrowRight") {
             var plus = AfficheIndex + 1;
-            if (plus < lightboxgallery.length) { 
+            if (plus < lightboxgallery.length) {
                 lightboxgallery[AfficheIndex].classList.remove("active");
                 lightboxgallery[plus].classList.add("active");
                 lightboxgallery[plus].firstElementChild.firstElementChild.focus(); //focus le photo qui est affiché
@@ -91,9 +92,8 @@ function keyArrowLightbox() { ///fonction keyboard pour lightbox
         }
     })
 
-    lightboxBtns.addEventListener("keydown", closeBykey);
-
-    function closeBykey(e) {
+    lightboxBtns.addEventListener("keydown", closeBykey); // quand button close est focused,
+    function closeBykey(e) { // tab "Enter" pour fermer lightbox
         const gallery = document.querySelectorAll(".photo")
         if (e.key == "Enter") {
             const AfficheIndex = arryLightboxgallery
@@ -101,38 +101,37 @@ function keyArrowLightbox() { ///fonction keyboard pour lightbox
             lightboxBtns.classList.remove("active");
             console.log("AfficheIndex", AfficheIndex)
             removeActive();
-            gallery[AfficheIndex].focus();
-                         }}
+            gallery[AfficheIndex].focus(); // quand lightbox est fermé, le photo été ouvert focus
+        }
+    }
 
 }
 
 function focusInsidePage() {
+    const header = document.querySelector("header")
 
-    const focusableElements =
-        'header a, button,[tabindex="0"]';
-
-    const focusableContent = document.querySelectorAll(focusableElements);
-    const firstFocusableElement = focusableContent[1]; // recupere link index
-    const lastFocusableElement = focusableContent[38]; // recupere dernier element dans la page
-    console.log(firstFocusableElement,lastFocusableElement );
     document.addEventListener('keydown', function (e) {
+        const numLikes = document.querySelectorAll("button .like");
+        const likesLength = numLikes.length;
+        const lastNumLike = document.activeElement.firstElementChild //dernier element dans la page
         let isTabPressed = e.key === 'Tab';
+
         if (!isTabPressed) {
             return;
         } else { // si "tab" key est appuyé
-            if (document.activeElement === lastFocusableElement) { // focused element est dernier element
-                firstFocusableElement.focus(); // logo link focus
-                e.preventDefault();
-                }}
+            if (document.activeElement.className == "photo_like") { // focused element est dernier element
+                if (lastNumLike.innerHTML == numLikes[likesLength - 1].innerHTML) { // si focused element est dernier element
+                    header.focus();
+                }
+            }
+        }
     })
 }
 
 
-
- function Tester() {
+function Tester() {
 
     document.addEventListener("keydown", (e) => {
         console.log(e.key, document.activeElement)
     })
 }
- 
