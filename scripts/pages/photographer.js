@@ -294,6 +294,7 @@ function calculeSumLikes() {  //calule total likes
 async function init() {
 
     const { media } = await getmediaData();// Récupère les datas media
+    console.log("media",media)
     const { photographers } = await getPhotographersData();// Récuperer les datas photographers
     const photographer = getPhotographer(photographers);// recuperer data de page photographer
     const filteredMedia = getArryphotos(media); // Tableau d'image de photographer affiché
