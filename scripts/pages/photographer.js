@@ -3,7 +3,7 @@
 const id = new URL(location.href).searchParams.get("id")
 const lightbox = document.querySelector(".lightbox_container")
 const lightboxBtns = document.querySelector(".lightbox_buttons")
-const lightboxParent = document.querySelector(".lightbox")
+/* const lightboxParent = document.querySelector(".lightbox") */
 
 
 function getPhotographer(photographersData) {  // récupère data de photographer affiché
@@ -26,7 +26,7 @@ function displayHeader(photographer) { // cree un artcile de photographer dans h
 
 function addDataId() {  //rajouter "data-id" a chaque photo
     const gallery = document.querySelectorAll(".photo") // get dom image or video
-    for (i = 0; i < gallery.length; i++) {
+    for (let i = 0; i < gallery.length; i++) {
         const gal = gallery[i].firstElementChild
         gal.setAttribute("data-id", i);
     }
@@ -68,7 +68,7 @@ function addlightbox(photographer, myArray) {
             console.log("currentDataId", currentDataId);
             lightboxgallery[currentDataId].classList.add("active");
             lightboxBtns.classList.add("active")
-        };
+        }
 
         // button next et button prev
         const arryLightboxgallery = Array.from(lightboxgallery); // transform nodelist à l'array
@@ -164,7 +164,7 @@ function filterMedia(photographer, media) {
 
     function triLike(myArray) { //trier le tableau par nom de likes
         return myArray.sort((a, b) => b.likes - a.likes);
-    };
+    }
     function triDate(myArray) {
         
         myArray.sort((a, b) => { //trier le tableau par la date plus récente
@@ -172,10 +172,10 @@ function filterMedia(photographer, media) {
             const aDate = new Date((a.date).replace(/-/g, "/"))
             return bDate - aDate
         })
-    };
+    }
     function triTitle(myArray) { //trier le tableau par premier lettre de titre
         myArray.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
-    };
+    }
 
     console.log("myArray3", myArray3)
     console.log("myArray1", myArray1)
@@ -261,7 +261,7 @@ function filterMedia(photographer, media) {
 
 function addLike() { //fonction rajoute un seul like
     const btnLike = document.querySelectorAll("button.photo_like")
-    for (var i = 0; i < btnLike.length; i++) {
+    for (let i = 0; i < btnLike.length; i++) {
         let clicked = false;
 
         btnLike[i].addEventListener("click", add)
@@ -285,7 +285,7 @@ function calculeSumLikes() {  //calule total likes
     const numLikes = document.querySelectorAll("button .like")
 
     let sum = 0;
-    for (i = 0; i < numLikes.length; i++) {
+    for (let i = 0; i < numLikes.length; i++) {
         sum += numLikes[i].innerHTML * 1;
     }
     console.log(sum)
