@@ -16,20 +16,20 @@
   </head>
   <body>
     <!--header de la page photographe-->
-    <header role="banner" tabindex="0" aria-label="en-tete de la page photographer">
-      <a href="index.html"><img src="assets/images/logo.png" alt ="logo de bannière pour le site" class="logo" /></a>
+    <header role="banner" tabindex="0" aria-label="en-tete de la page">
+      <a href="index.html" title="lien pour retourner à la page d'accueil"><img src="assets/images/logo.png" alt ="logo de bannière pour le site" class="logo" /></a>
     </header>
     <!--main contenu de la page principale-->
-    <main id="main" role="main" aria-label="contenu de la page du photographe">
+    <main id="main" role="main" aria-label="contenu de la page">
     <!--profile de photographer-->
-      <div class="photograph-header" aria-label="le profile de photographer" tabindex="0">
-        <button class="contact_button" aria-label="button pour ouvrir la fenetre pour contacter le photographe" onclick="displayModal()">Contactez-moi</button>
+      <div class="photograph-header" aria-label="les information de photographer" tabindex="0">
+        <button class="contact_button" aria-label="click ce button pour contacter photographer" onclick="displayModal()">Contactez-moi</button>
       </div>
     <!--select box-->
       <div id="selectbox">
          <span role="label" class="label" aria-labelledby="selectbox">Trier Par</span>
          <div class="select" role="dropdown menu" tabindex="0" arai-label="un dropdown menu pour tirier l'album des photos" >
-           <div class="pre-option arrowdown">Popularité</div>
+           <div class="pre-option arrowdown" aria-label ="un dropdown menu pour tirier l'album des photos">Popularité</div>
            <div class="options">
              <div tabindex="0" class="arrowup" aria-label="trier par Popularité">Popularité</div>
              <div tabindex="0" aria-label="trier par Date">Date</div>
@@ -40,9 +40,9 @@
     <!--modal album photos-->
       <section class="photos" tabindex="0" aria-label="l'album photos de photographer">
     <!--encart-->
-        <div class="encart" tabindex="0" aria-label="un encart pour presenter le totale likes et tarif de photographer">
+        <div class="encart" tabindex="0" aria-label="un encart pour presenter le totale like et tarif de photographer">
           <div class="encart_likes">
-             <span id="totallikes" aria-label="le photographe a total likes" tabindex="0">300</span>
+             <span id="totallikes" aria-label="le photographe a 300 total likes" tabindex="0">300</span>
               <img src="assets/icons/heart_black.svg" aria-hidden="true" alt="icon image ceour">
           </div>
           <span id="encart_price" aria-label="le tarif est 300€ par jour" tabindex="0">300€/jour      

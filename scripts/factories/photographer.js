@@ -54,7 +54,7 @@ function mediaFactory(photographer, media) {
           <span>${title}</span>
        </div>
        <button type="button" title="mettre un like au post ${title}" class="photo_like"
-       aria-label="button pour liker" tabindex="0">
+       aria-label="button pour rajouter un like" tabindex="0">
           <span class="like">${likes}</span>
           <img src="assets/icons/heart-icon.svg" alt="button pour rajouter like en form coeur">
        </buton>
@@ -72,7 +72,7 @@ function mediaFactory(photographer, media) {
       </div>
       <button type="button" class="photo_like" title="mettre un like au post ${title} "tabindex="0">
          <span class="like">${likes}</span>
-         <img src="assets/icons/heart-icon.svg" alt="button pour rajouter like en form coeur"/>
+         <img src="assets/icons/heart-icon.svg" alt="button pour rajouter un like en form coeur"/>
       </buton>
     </div>
     `
@@ -129,12 +129,13 @@ function lightboxFactory(photographer, media) {
 
 
 function encartFactory(photographer) {
-
+    
     const { price } = photographer;
     const tarif = document.getElementById("encart_price")
     const prix = photographer.price
     tarif.innerHTML = prix + "€/jour"
     tarif.setAttribute("aria-label", "le tarif est " + prix + " € par jour")
+    
     return { price }
 }
 

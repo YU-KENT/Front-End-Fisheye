@@ -21,6 +21,7 @@ function displayHeader(photographer) { // cree un artcile de photographer dans h
     const photographerMode = photographerFactory(photographer);
     const headerCardDOM = photographerMode.getheaderCardDOM();
     pageHeader.appendChild(headerCardDOM);
+    pageHeader.setAttribute("aria-label","les information de photographer "+ photographer.name)
 };
 
 function addDataId() {  //rajouter "data-id" a chaque photo
@@ -289,6 +290,7 @@ function calculeSumLikes() {  //calule total likes
     }
     console.log(sum)
     divLike.innerHTML = sum;
+    divLike.setAttribute("aria-label","le photographe a "+ sum +"total like")
 }
 
 async function init() {
