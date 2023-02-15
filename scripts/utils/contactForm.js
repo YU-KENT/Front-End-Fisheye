@@ -48,7 +48,7 @@ function validatePrenom() {
     return true;
   }
 
-};
+}
 
 // validate nom
 function validateNom() {
@@ -62,7 +62,7 @@ function validateNom() {
     formData[1].removeAttribute('data-error-visible');
     return true;
   }
-};
+}
 
 
 // validate email
@@ -94,7 +94,8 @@ function validateMessage() {
     formData[3].removeAttribute('data-error-visible');
     return true;
   }
-};
+}
+
 async function getcurrentname() {
   const currentname = document.getElementById("currentname")
   const { photographers } = await getPhotographersData()
@@ -102,4 +103,4 @@ async function getcurrentname() {
   currentname.innerHTML = photographer.name
   return (currentname)
 }
-getcurrentname();
+getcurrentname()

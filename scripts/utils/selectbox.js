@@ -10,7 +10,7 @@ sel.addEventListener('click', (e) => {
     label.setAttribute('hidden', true)
 });
 // click dehors, fermer dropdown menu
-document.body.addEventListener('click', (e) => {
+document.body.addEventListener('click', () => {
     options.setAttribute('hidden', true);
     label.removeAttribute('hidden');
 });
