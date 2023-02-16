@@ -9,7 +9,7 @@ function photographerFactory(data) {
         const userCard = `
         <a href="${link}" role="link" title="visiter la page de photographer ${name}"
         <div class="photographer-img"><img src="${picture}" alt="portrait de ${name}"></div>
-        <div class="photographer-info" aria-label="information de photographer ${name}">
+        <div class="photographer-info" aria-label="${name},vient de ${city}, ${country},son slogan est ${tagline},le tarif est  ${price}€ par jour   ">
         <h2>${name}</h2>
         <p>${city}, ${country}</p>
         <span>${tagline}</span>
