@@ -3,7 +3,6 @@
 const id = new URL(location.href).searchParams.get("id")
 const lightbox = document.querySelector(".lightbox_container")
 const lightboxBtns = document.querySelector(".lightbox_buttons")
-/* const lightboxParent = document.querySelector(".lightbox") */
 
 
 function getPhotographer(photographersData) {  // récupère data de photographer affiché
@@ -16,21 +15,21 @@ function getArryphotos(media) {   // récupère media data de photographer affic
     return (arryPhotos);
 }
 
-function displayHeader(photographer) { // cree un artcile de photographer dans header
+function displayHeader(photographer) { // afficher l'artcile de photographer dans header
     const pageHeader = document.querySelector(".photograph-header");
     const photographerMode = photographerFactory(photographer);
     const headerCardDOM = photographerMode.getheaderCardDOM();
     pageHeader.appendChild(headerCardDOM);
     pageHeader.setAttribute("aria-label","les information de photographer "+ photographer.name)
 }
-
-function addDataId() {  //rajouter "data-id" a chaque photo
+function addDataId() {  //rajouter "data-id" a chaque photo pour afficher le lightbox plus tard
     const gallery = document.querySelectorAll(".photo") // get dom image or video
     for (let i = 0; i < gallery.length; i++) {
         const gal = gallery[i].firstElementChild
         gal.setAttribute("data-id", i);
     }
 }
+
 function addPhotos(photographer, medias) { //creat l'abulm photo
     const cardSection = document.querySelector(".photos")
     medias.forEach((media) => {
@@ -41,11 +40,11 @@ function addPhotos(photographer, medias) { //creat l'abulm photo
 }
 
 
-function addlightbox(photographer, myArray) {
+function addlightbox(photographer, myArray) { // method
     const btnPrev = document.querySelector(".lightbox_prev")
     const btnNext = document.querySelector(".lightbox_next")
 
-    // creer photos de lightbox
+    // creer un album de photos de lightbox
     myArray.forEach((media) => {
         const lightboxCardMode = lightboxFactory(photographer, media)
         const lightboxCard = lightboxCardMode.getLightboxCard()
@@ -65,8 +64,7 @@ function addlightbox(photographer, myArray) {
             lightboxgallery[currentDataId].classList.add("active");
             lightboxBtns.classList.add("active");
         } else {
-            console.log("currentDataId", currentDataId);
-            lightboxgallery[currentDataId].classList.add("active");
+            lightboxgallery[currentDataId].classList.add("active"); // data-id egale l'index de album lightbox
             lightboxBtns.classList.add("active")
         }
 
@@ -80,7 +78,6 @@ function addlightbox(photographer, myArray) {
             if (plus < lightboxgallery.length) {  
                 lightboxgallery[AfficheIndex].classList.remove("active")
                 lightboxgallery[plus].classList.add("active")
-                console.log("plus", plus)
             } else return;
         }
 
@@ -147,6 +144,39 @@ function cleanLightBoxPhotos() { //surprimer lightbox photo
     const emptyLightBox = ``
     lightbox.innerHTML = emptyLightBox;
 }
+function addLike() { //fonction rajoute un seul like
+    const btnLike = document.querySelectorAll("button.photo_like")
+    for (let i = 0; i < btnLike.length; i++) {
+        let clicked = false;
+
+        btnLike[i].addEventListener("click", add)
+        function add(e) {
+            const number = e.target.parentNode.firstElementChild
+            if (!clicked) {
+                clicked = true;
+                number.innerHTML++;
+                calculeSumLikes();
+            } else {  //si click encore, redure un like
+                clicked = false;
+                number.innerHTML--;
+                calculeSumLikes();
+            }
+        }
+    }
+}
+function calculeSumLikes() {  //calule total likes
+    const divLike = document.getElementById("totallikes")
+    const numLikes = document.querySelectorAll("button .like")
+
+    let sum = 0;
+    for (let i = 0; i < numLikes.length; i++) {
+        sum += numLikes[i].innerHTML * 1;
+    }
+    console.log(sum)
+    divLike.innerHTML = sum;
+    divLike.setAttribute("aria-label","le photographe a "+ sum +"total like")
+}
+
 
 function filterMedia(photographer, media) { 
     addlightbox(photographer, media);
@@ -175,9 +205,9 @@ function filterMedia(photographer, media) {
         myArray.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
     }
 
-    console.log("myArray3", myArray3)
-    console.log("myArray1", myArray1)
-    console.log("myArray2", myArray2)
+    console.log("triByTitle", myArray3)
+    console.log("triByLike", myArray1)
+    console.log("triByDate", myArray2)
     console.log("media", media)
     triLike(myArray1)
     triDate(myArray2);
@@ -257,39 +287,7 @@ function filterMedia(photographer, media) {
 
 }
 
-function addLike() { //fonction rajoute un seul like
-    const btnLike = document.querySelectorAll("button.photo_like")
-    for (let i = 0; i < btnLike.length; i++) {
-        let clicked = false;
 
-        btnLike[i].addEventListener("click", add)
-        function add(e) {
-            const number = e.target.parentNode.firstElementChild
-            if (!clicked) {
-                clicked = true;
-                number.innerHTML++;
-                calculeSumLikes();
-            } else {  //si click encore, redure un like
-                clicked = false;
-                number.innerHTML--;
-                calculeSumLikes();
-            }
-        }
-    }
-}
-
-function calculeSumLikes() {  //calule total likes
-    const divLike = document.getElementById("totallikes")
-    const numLikes = document.querySelectorAll("button .like")
-
-    let sum = 0;
-    for (let i = 0; i < numLikes.length; i++) {
-        sum += numLikes[i].innerHTML * 1;
-    }
-    console.log(sum)
-    divLike.innerHTML = sum;
-    divLike.setAttribute("aria-label","le photographe a "+ sum +"total like")
-}
 
 async function init() {
 

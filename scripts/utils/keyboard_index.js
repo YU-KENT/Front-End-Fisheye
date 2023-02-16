@@ -28,13 +28,13 @@ function keyarrowLeftRight() {  //fonction, appuye"right" et "left" pour navigue
             if (active < articleLength - 1)
                 active += 1;
             sectionArtciles[active].focus();
-            console.log("right", active)
+        
 
         }else if (e.key == "ArrowLeft") {
             if (active > 0) {
                 active -= 1;
                 sectionArtciles[active].focus();
-                console.log("left", active)
+                
             }
         }
     })

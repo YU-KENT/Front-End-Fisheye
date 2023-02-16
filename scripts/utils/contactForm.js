@@ -1,3 +1,4 @@
+//vlidation pour les champs de form contact
 const prenom = document.getElementById("firstname")
 const nom = document.getElementById("lastname")
 const email = document.getElementById("email")

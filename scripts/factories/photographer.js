@@ -23,7 +23,7 @@ function photographerFactory(data) {
         const article = document.createElement('article');
         const headerCard = `
         <div class="photographer-img"><img src="${picture}" alt="portrait de ${name}"></div>
-        <div class="photographer-info" aria-label="information de photographer ${name}">
+        <div class="photographer-info" aria-label="les informations de ${name}">
         <h2>${name}</h2>
         <p>${city}, ${country}</p>
         <span>${tagline}</span>
@@ -130,12 +130,10 @@ function lightboxFactory(photographer, media) {
 
 function encartFactory(photographer) {
     
-    const { price } = photographer;
     const tarif = document.getElementById("encart_price")
     const prix = photographer.price
     tarif.innerHTML = prix + "€/jour"
     tarif.setAttribute("aria-label", "le tarif est " + prix + " € par jour")
     
-    return { price }
 }
 

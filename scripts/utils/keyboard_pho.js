@@ -10,7 +10,7 @@ function modalkeyEscape() {
     })
 }
 
-/// fonction keyboard pour l'abulm photo
+/// fonction keyboard pour l'abulm photo 
 let active = -1;
 function keyArrowGallery() {  
     const section = document.querySelector("section")
@@ -62,6 +62,7 @@ function keyArrowLightbox() {
     const lightboxgallery = document.querySelectorAll(".lightbox_affiche")
     const arryLightboxgallery = Array.from(lightboxgallery)
     const lightboxParent = document.querySelector(".lightbox")
+    
     lightboxParent.addEventListener("keydown", (e) => {
         const gallery = document.querySelectorAll(".photo")
         const lightboxgallery = document.querySelectorAll(".lightbox_affiche")
@@ -107,6 +108,8 @@ function keyArrowLightbox() {
     }
 
 }
+
+
 
 function focusInsidePage() {
     const header = document.querySelector("header")
