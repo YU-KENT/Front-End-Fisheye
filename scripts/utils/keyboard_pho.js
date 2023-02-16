@@ -1,5 +1,5 @@
-
-function modalkeyEscape() {  // appuye "Escape" pour fermer le modal contact form
+// appuye "Escape" pour fermer le modal contact form
+function modalkeyEscape() {  
     const modal = document.getElementById("contact_modal");
     const btnContact = document.querySelector(".contact_button")
     modal.addEventListener("keydown", (e) => {
@@ -10,8 +10,9 @@ function modalkeyEscape() {  // appuye "Escape" pour fermer le modal contact for
     })
 }
 
+/// fonction keyboard pour l'abulm photo
 let active = -1;
-function keyArrowGallery() {  /// fonction keyboard pour l'abulm photo
+function keyArrowGallery() {  
     const section = document.querySelector("section")
     let pressed = false;
     section.addEventListener("keydown", (e) => {
@@ -56,8 +57,8 @@ function keyArrowGallery() {  /// fonction keyboard pour l'abulm photo
 
 }
 
-
-function keyArrowLightbox() { ///fonction keyboard pour lightbox
+///fonction keyboard pour lightbox
+function keyArrowLightbox() { 
     const lightboxgallery = document.querySelectorAll(".lightbox_affiche")
     const arryLightboxgallery = Array.from(lightboxgallery)
     const lightboxParent = document.querySelector(".lightbox")

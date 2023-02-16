@@ -17,8 +17,8 @@ async function displayPhotographers() {
     focusInsidePage();
     Tester();
 
-};
+}
 
-displayPhotographers();
+displayPhotographers()
 
 

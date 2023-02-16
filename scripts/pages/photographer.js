@@ -22,7 +22,7 @@ function displayHeader(photographer) { // cree un artcile de photographer dans h
     const headerCardDOM = photographerMode.getheaderCardDOM();
     pageHeader.appendChild(headerCardDOM);
     pageHeader.setAttribute("aria-label","les information de photographer "+ photographer.name)
-};
+}
 
 function addDataId() {  //rajouter "data-id" a chaque photo
     const gallery = document.querySelectorAll(".photo") // get dom image or video
@@ -114,8 +114,6 @@ function addlightbox(photographer, myArray) {
                 } else {
                     lightbox.style.display = "none";
                 }
-                console.log("关闭")
-
             } else {
                 lightbox.style.display = "block"
             }
@@ -296,7 +294,6 @@ function calculeSumLikes() {  //calule total likes
 async function init() {
 
     const { media } = await getmediaData();// Récupère les datas media
-    console.log("media",media)
     const { photographers } = await getPhotographersData();// Récuperer les datas photographers
     const photographer = getPhotographer(photographers);// recuperer data de page photographer
     const filteredMedia = getArryphotos(media); // Tableau d'image de photographer affiché
