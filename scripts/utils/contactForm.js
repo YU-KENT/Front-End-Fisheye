@@ -22,18 +22,18 @@ function closeModal() {  // fonction "click" pour fermer le contact form
 
 
 formulaire.addEventListener("submit", validate)
-function validate(event) {
-  event.preventDefault();
-  event.stopPropagation();
+function validate(e) {
+  e.preventDefault();
+  e.stopPropagation();
   const conditions = //array for all validations
     [validatePrenom(), validateNom(), validateEmail(), validateMessage()];
 
   if (conditions.some(valid => !valid)) {  // filter all function,if there is 1 or plus invalidate function, return false
     return;
   } else { // else there is 0 invalide function
-    alert("votre message est bien engistré"); // show confirmation 
-    location.reload();
-
+    const mess = prenom.value +"\n" + nom.value +"\n"+email.value+"\n"+ message.value
+    console.log(mess)
+    closeModal();
   }
 }
 //validate prenom
@@ -105,3 +105,4 @@ async function getcurrentname() {
   return (currentname)
 }
 getcurrentname()
+

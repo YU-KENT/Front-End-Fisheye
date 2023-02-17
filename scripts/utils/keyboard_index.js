@@ -39,9 +39,3 @@ function keyarrowLeftRight() {  //fonction, appuye"right" et "left" pour navigue
         }
     })
 }
-function Tester() {
-
-    document.addEventListener("keydown", (e) => {
-        console.log(e.key, document.activeElement)
-    })
-}

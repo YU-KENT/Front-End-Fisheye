@@ -104,12 +104,14 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    box-sizing: border-box;
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
     margin:24px;
+    box-sizing: border-box;
 }
 
 .modal header img {
@@ -253,9 +255,8 @@ form input,form textarea {
     
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin:0 100px;
+    margin:100px;
     gap:85px;
-    margin-top: 100px;
     outline: none;
     
 }
@@ -519,8 +520,8 @@ overflow: hidden;
     section.photos {
      width:100%;
     grid-template-columns: repeat(2,1fr);
-    margin:0;
-    margin-top: 100px;
+    margin:100px 0 ;
+    
     gap:0;
   }
     
@@ -623,10 +624,8 @@ overflow: hidden;
     font-size: 15px;
     margin-bottom: 25px;
    }
-   .modal{
-    width:70%;
-    height: 740px;
-   }
+   
+   
    form label{
     font-size: 20px;
    }
@@ -694,5 +693,34 @@ overflow: hidden;
   @media only screen and (max-width: 380px){
     .contact_button{
       right:-21%;
+    }
+  }
+
+  @media only screen and (max-height:900px){
+    .modal{
+      height:100vh;
+      width:580px;
+    }
+    .modal header{
+      height:60px;
+      margin:5px;
+    }
+    .modal header h2{
+      font-size: 45px;
+    }
+    form label{
+      font-size: 25px;
+    }
+    form input, form textarea{
+      height: 45px;
+    }
+    #message{
+      max-height:100px;
+    }
+    .lightbox_img, .lightbox_video{
+      margin-bottom: 30px;
+    }
+    .lightbox_img img,.lightbox_video video{
+      height:800px
     }
   }

@@ -110,7 +110,6 @@ function keyArrowLightbox() {
 }
 
 
-
 function focusInsidePage() {
     const header = document.querySelector("header")
 
@@ -133,9 +132,3 @@ function focusInsidePage() {
 }
 
 
-function Tester() {
-
-    document.addEventListener("keydown", (e) => {
-        console.log(e.key, document.activeElement)
-    })
-}

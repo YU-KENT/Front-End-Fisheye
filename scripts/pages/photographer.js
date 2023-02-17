@@ -194,7 +194,6 @@ function filterMedia(photographer, media) {
         return myArray.sort((a, b) => b.likes - a.likes);
     }
     function triDate(myArray) {
-        
         myArray.sort((a, b) => { //trier le tableau par la date plus récente
             const bDate = new Date((b.date).replace(/-/g, "/"))
             const aDate = new Date((a.date).replace(/-/g, "/"))
@@ -209,16 +208,15 @@ function filterMedia(photographer, media) {
     console.log("triByLike", myArray1)
     console.log("triByDate", myArray2)
     console.log("media", media)
-    triLike(myArray1)
-    triDate(myArray2);
-    triTitle(myArray3)
 
     const options = document.querySelector('.options');
     const label = document.querySelector('.pre-option');
     options.addEventListener("click", clickFilter);
     options.addEventListener("keydown", keyboardFilter);
+
     function clickFilter(e) {  // fonction click pour tirer
         if (e.target.textContent == "Popularité") {
+            triLike(myArray1)
             cleanPhotos();
             addPhotos(photographer, myArray1)
             addDataId();
@@ -228,7 +226,7 @@ function filterMedia(photographer, media) {
 
 
         } else if (e.target.textContent == "Date") {
-
+            triDate(myArray2);
             cleanPhotos();
             addPhotos(photographer, myArray2);
             addDataId();
@@ -237,18 +235,19 @@ function filterMedia(photographer, media) {
             addLike();
 
         } else if (e.target.textContent == "Titre") {
+            triTitle(myArray3)
             cleanPhotos();
             addPhotos(photographer, myArray3);
             addDataId();
             cleanLightBoxPhotos();
             addlightbox(photographer, myArray3);
             addLike();
-
         }
     }
     function keyboardFilter(e) {  // fonction keyboard pour tirer
         if (e.key == "Enter") {
             if (e.target.textContent == "Popularité") {
+                triLike(myArray1);
                 cleanPhotos();
                 addPhotos(photographer, myArray1)
                 addDataId();
@@ -261,6 +260,7 @@ function filterMedia(photographer, media) {
                 label.removeAttribute('hidden');
 
             } else if (e.target.textContent == "Date") {
+                triLike(myArray2);
                 cleanPhotos();
                 addPhotos(photographer, myArray2);
                 addDataId();
@@ -273,6 +273,7 @@ function filterMedia(photographer, media) {
                 label.removeAttribute('hidden');
 
             } else if (e.target.textContent == "Titre") {
+                triLike(myArray3);
                 cleanPhotos();
                 addPhotos(photographer, myArray3);
                 addDataId();
@@ -284,10 +285,7 @@ function filterMedia(photographer, media) {
                 options.setAttribute('hidden', true);
                 label.removeAttribute('hidden');
             }}}
-
 }
-
-
 
 async function init() {
 
@@ -302,7 +300,6 @@ async function init() {
     keyArrowGallery(); 
     keyArrowLightbox();
     focusInsidePage();
-    Tester(); 
 
 }
 
