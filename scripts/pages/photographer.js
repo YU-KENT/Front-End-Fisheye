@@ -151,7 +151,8 @@ function addLike() { //fonction rajoute un seul like
 
         btnLike[i].addEventListener("click", add)
         function add(e) {
-            const number = e.target.parentNode.firstElementChild
+            const number = e.currentTarget.firstElementChild
+            console.log(e.currentTarget)
             if (!clicked) {
                 clicked = true;
                 number.innerHTML++;
