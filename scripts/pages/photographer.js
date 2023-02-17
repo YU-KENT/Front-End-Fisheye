@@ -98,11 +98,11 @@ function addlightbox(photographer, myArray) { // method
         btnClose.addEventListener("click", closeLightbox)
 
         function closeLightbox(e) {
-            console.log(e.target) // function click close button
+           
             var lightboxDisplaySetting = window.getComputedStyle(lightbox, null).getPropertyValue("display");
             var lightBtnsDisplaySetting = window.getComputedStyle(lightboxBtns, null).getPropertyValue("display");
             // recupere style "display"
-            console.log(lightBtnsDisplaySetting);
+            
             if (lightboxDisplaySetting == 'block') {
                 if (lightBtnsDisplaySetting == 'flex') {
                     lightbox.style.display = "none";
